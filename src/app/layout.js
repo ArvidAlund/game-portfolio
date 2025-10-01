@@ -1,15 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
+import "./CSS/card.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const Press_Start = Press_Start_2P({
+  variable: "--font-start",
+  weight: ["400"],   // Vikt måste anges som array av strängar
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const VT = VT323({
+  variable: "--font-vt323",
+  weight: ["400"],   // Även här, måste vara array
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -18,10 +19,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="sv">
+      <body className={`${Press_Start.variable} ${VT.variable} antialiased`}>
         {children}
       </body>
     </html>

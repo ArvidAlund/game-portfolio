@@ -1,0 +1,166 @@
+:root {
+  --paper-bg: #f7efd8; /* papperets grundfärg */
+  --paper-edge: #e7d6ac; /* mörkare kantton */
+  --stain: rgba(120, 80, 20, 0.08);
+}
+
+.paper-card {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  /* papperstextur: flera små gradients för subtilt skrovligt utseende */
+  background: radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 255, 255, 0.12) 0 2%,
+      transparent 2%
+    ),
+    radial-gradient(circle at 80% 60%, rgba(0, 0, 0, 0.03) 0 2%, transparent 2%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.02)),
+    var(--paper-bg);
+  background-size: 14px 14px, 20px 20px, auto, auto;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  padding: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #2b2b1f;
+  /* gör kanten "pixel-art-ish" genom ett tajt clip-path polygon med många hörn */
+  clip-path: polygon(
+    0% 10%,
+    5% 9%,
+    10% 11%,
+    15% 9%,
+    22% 12%,
+    28% 10%,
+    35% 13%,
+    42% 11%,
+    48% 13%,
+    55% 10%,
+    62% 13%,
+    70% 11%,
+    78% 14%,
+    85% 12%,
+    92% 15%,
+    100% 13%,
+    96% 22%,
+    100% 28%,
+    94% 34%,
+    100% 40%,
+    96% 46%,
+    100% 52%,
+    92% 58%,
+    98% 63%,
+    90% 67%,
+    100% 74%,
+    92% 77%,
+    96% 82%,
+    100% 86%,
+    88% 92%,
+    80% 90%,
+    72% 94%,
+    66% 90%,
+    60% 94%,
+    52% 92%,
+    46% 94%,
+    40% 92%,
+    34% 94%,
+    28% 90%,
+    22% 94%,
+    16% 90%,
+    10% 94%,
+    6% 90%,
+    0% 94%,
+    4% 86%,
+    0% 80%,
+    6% 74%,
+    0% 70%,
+    4% 62%,
+    0% 58%,
+    6% 52%,
+    0% 46%,
+    4% 40%,
+    0% 34%,
+    4% 28%,
+    0% 22%
+  );
+  /* skapa en tunn inre kantfärg via outline (syns bättre mot mörk bakgrund) */
+  outline: 1px solid rgba(0, 0, 0, 0.15);
+  /* pixel-effekt: gör kanten lite "trappad" genom att skala och sätta image-rendering i parent */
+}
+
+/* skugga + mörk kant som ser ut som 'sliten sida' */
+.paper-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  clip-path: inherit;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.04));
+  mix-blend-mode: multiply;
+}
+
+/* fläckar och skärvor */
+.paper-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      circle at 18% 70%,
+      var(--stain) 0 6%,
+      transparent 6%
+    ),
+    radial-gradient(
+      circle at 72% 20%,
+      rgba(80, 50, 20, 0.06) 0 8%,
+      transparent 8%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(60, 40, 20, 0.04) 0 10%,
+      transparent 10%
+    );
+  opacity: 1;
+  clip-path: inherit;
+}
+
+/* innehållet ovanpå pseudo-elementen */
+.paper-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px;
+}
+
+/* lägg till "pixel-ruff" i hörn genom små kvadrater (kanter) */
+.ruff {
+  position: absolute;
+  z-index: 3;
+  width: 8px;
+  height: 8px;
+  background: var(--paper-edge);
+  box-shadow: 12px 2px 0 0 var(--paper-edge), 22px -1px 0 0 var(--paper-edge),
+    -10px 10px 0 0 rgba(0, 0, 0, 0.06);
+  top: 6px;
+  left: 6px;
+  transform: scale(1);
+  opacity: 0.9;
+  border-radius: 1px;
+}
+
+/* Responsivt */
+@media (max-width: 600px) {
+  :root {
+    --paper-width: 92vw;
+    --paper-height: 56vw;
+  }
+  .paper-card {
+    padding: 18px;
+  }
+}
