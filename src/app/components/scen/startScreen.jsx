@@ -8,11 +8,11 @@ export default function StartScreen({onClose}){
     const menuRef = useRef(null); 
     const buttonRef = useRef(null);
     const [startGame, setStartGame] = useState(false);
-    useEffect(()=>{
-        const tl = gsap.timeline()
-        tl.from(menuRef.current, {y:-window.innerHeight, scale:0.5, duration:1, ease:"power2.out"})
-        tl.from(buttonRef.current, {y:window.innerHeight, duration:1, ease:"power2.out"},"<")
-    },[])
+    // useEffect(()=>{
+    //     const tl = gsap.timeline()
+    //     tl.from(menuRef.current, {y:-window.innerHeight, scale:0.5, duration:1, ease:"power2.out"})
+    //     tl.from(buttonRef.current, {y:window.innerHeight, duration:1, ease:"power2.out"},"<")
+    // },[])
 
     useEffect(()=>{
         if(startGame){
