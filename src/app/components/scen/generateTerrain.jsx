@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Ground from "./ground";
 import Mountains from "./generateMountains";
 import Clouds from "./clounds";
+import House from "./house";
 
 export default function Terrain() {
   const [initialized, setInitialized] = useState(false);
@@ -14,8 +15,9 @@ export default function Terrain() {
       setTerrainElements(
         <>
           <Clouds amount={10} />
-          <Mountains amount={5} />
+          <Mountains amount={15} />
           <Ground />
+          <House/>
         </>
       );
       setInitialized(true);

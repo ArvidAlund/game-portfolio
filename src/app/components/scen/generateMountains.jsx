@@ -12,12 +12,12 @@ function MountainLayer({ amount, color, opacity, height, offset }) {
   return (
     <div className="absolute bottom-0 w-full" style={{ height: `${height}px` }}>
       {[...Array(amount)].map((_, index) => {
-        const left = (index * 100) / amount;
+        const left = (index * 100) / amount - 2;
 
         return (
           <div
             key={index}
-            className={`absolute ${color} opacity-${opacity}`}
+            className={`absolute ${color} opacity-${opacity} object-center`}
             style={{
               left: `${left}%`,
               bottom: `${offset}px`,

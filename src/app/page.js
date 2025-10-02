@@ -3,6 +3,7 @@ import Character from "./components/scen/character"
 import StartScreen from "./components/scen/startScreen"
 import TipsContainer from "./components/scen/tipsContainer"
 import Terrain from "./components/scen/generateTerrain"
+import firstHouseCollision from "./hooks/character/collitions/firstHouseCollision"
 import { useState, useMemo, useEffect } from "react"
 
 export default function Home() {
@@ -22,6 +23,20 @@ export default function Home() {
     
     return () => clearTimeout(timeout)
   }, [])
+
+  useEffect(() => {
+  let animationFrameId;
+
+  const loop = () => {
+    firstHouseCollision();
+    
+    animationFrameId = requestAnimationFrame(loop);
+  };
+
+  loop();
+
+  return () => cancelAnimationFrame(animationFrameId);
+}, []);
 
   const handleCloseStartScreen = () => {
     setMenuClosed(true)

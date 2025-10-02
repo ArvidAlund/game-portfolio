@@ -16,7 +16,7 @@ export default function useCharacterMovement(initialLeft = 0, initialBottom = (1
     const handleKeyDown = (event) => {
       setKeysPressed(prev => ({ ...prev, [event.key]: true }));
       // sätt velocityY när man trycker på hopp
-      if ((event.key === "w" || event.key === "ArrowUp") && bottom === initialBottom) {
+      if ((event.key === "w" || event.key === "ArrowUp" || event.key === " ") && bottom === initialBottom) {
         setVelocityY(jumpStrength);
       }
     };
