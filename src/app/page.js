@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[rgb(1,173,255)] h-screen w-screen relative">
+    <div className="bg-[rgb(1,173,255)] h-screen w-full relative overflow-hidden">
       {!terrainReady ? (
         <div className="flex justify-center items-center h-full text-white text-4xl">
           Loading...
