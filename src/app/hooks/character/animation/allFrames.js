@@ -1,5 +1,6 @@
 export const AllFrames = {
     "default":"/pixelart/character.png",
+    "back":"/pixelart/character-back.png",
     "blinkFrames":[
         "/pixelart/animate/Blink/step-1.png",
         "/pixelart/animate/Blink/step-2.png",

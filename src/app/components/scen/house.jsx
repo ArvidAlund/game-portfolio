@@ -1,6 +1,7 @@
 import isOverlapping from "@/app/lib/isOverlapping"
 import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap/gsap-core";
+import { emitEvent } from "@/app/utils/eventbus";
 
 export default function House(){
     const houseRef = useRef(null);
@@ -33,6 +34,7 @@ export default function House(){
         const handleKey = (e) => {
         if (e.key === "Enter" && nearPlayer) {
             console.log("Går in i huset!");
+            emitEvent("EnterHouse");
         }
         };
         window.addEventListener("keydown", handleKey);
@@ -53,7 +55,8 @@ export default function House(){
             <img src="/pixelart/houses/house2.png" alt="hus" />
             <div className="HouseText rounded-xl p-2 hidden" ref={TextRef}>
                 <h3>Bibloteket</h3>
-                <p>Tryck <mark>Enter</mark> för att gå in</p>
+                <p className="text-lg">Upptäck mer om mig och min resa.</p>
+                <p className="text-xs">Tryck <mark>Enter</mark> för att gå in</p>
 
             </div>
         </div>

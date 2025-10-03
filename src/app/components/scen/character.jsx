@@ -6,7 +6,7 @@ import Message from "./characterMessages";
 import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap/gsap-core";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
-
+import useEnterHouse from "@/app/hooks/character/animation/useEnterHouse";
 
 
 export default function Character() {
@@ -15,10 +15,12 @@ export default function Character() {
   const currentFrameBlink = useBlinkAnimation(AllFrames["blinkFrames"]);
   const currentFrameWalk = useWalkAnimation(AllFrames["walkFrames"]);
   const currentFrameJump = useJumpAnimation(AllFrames["jumpFrames"]);
+  const {currentFrameHouse, showTransition} = useEnterHouse(AllFrames["back"]);
   const messageRef = useRef(null);
   const [talking, setTalking] = useState(false);
 
   function getCurrentFrameSrc() {
+    if (showTransition) return AllFrames["back"];
     if (currentFrameJump !== null) return AllFrames["jumpFrames"][currentFrameJump];
     if (currentFrameWalk !== null) return AllFrames["walkFrames"][currentFrameWalk];
     if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
