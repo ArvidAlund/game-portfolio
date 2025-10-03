@@ -2,27 +2,30 @@ import useCharacterMovement from "@/app/hooks/character/movement/useCharacterMov
 import useBlinkAnimation from "@/app/hooks/character/animation/useBlinkAnimation";
 import useWalkAnimation from "@/app/hooks/character/animation/useWalkAnimation";
 import Message from "./characterMessages";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap/gsap-core";
+import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 
-const blinkFrames = [
-  "/pixelart/character.png",
-  "/pixelart/animate/Blink/step-1.png",
-  "/pixelart/animate/Blink/step-2.png",
-  "/pixelart/animate/Blink/step-1.png",
-];
 
-const walkFrames = [
-    "/pixelart/character.png",
-    "/pixelart/animate/Forward/step-1.png",
-    "/pixelart/animate/Forward/step-2.png"
-]
 
 export default function Character() {
-  const { left, bottom } = useCharacterMovement(window.innerWidth / 2);
-  const currentFrameBlink = useBlinkAnimation(blinkFrames);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { left, bottom } = useCharacterMovement(windowWidth / 2);
+  const currentFrameBlink = useBlinkAnimation(AllFrames["blinkFrames"]);
+  const currentFrameWalk = useWalkAnimation(AllFrames["walkFrames"]);
   const messageRef = useRef(null);
   const [talking, setTalking] = useState(false);
+
+  function getCurrentFrameSrc() {
+    if (currentFrameWalk !== null) return AllFrames["walkFrames"][currentFrameWalk];
+    if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
+    return AllFrames["default"];
+  }
+
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   const handlePlayerClick = () => {
   if (!talking && messageRef.current) {
@@ -64,13 +67,13 @@ export default function Character() {
 
   return (
     <div
-      className="absolute mb-[-8px] scale-400 Player"
+      className="absolute mb-[-8px] scale-400 select-none Player"
       style={{ left: `${left}px`, bottom:`${bottom}px` }}
       onClick={handlePlayerClick}
     >
       <div className="relative w-full h-full">
         <img
-        src={blinkFrames[currentFrameBlink]}
+        src={getCurrentFrameSrc()}
         alt="Character"
         className="origin-bottom pixelated"
       />
@@ -79,3 +82,4 @@ export default function Character() {
     </div>
   );
 }
+

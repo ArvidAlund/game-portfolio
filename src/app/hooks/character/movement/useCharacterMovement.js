@@ -1,25 +1,30 @@
 import { useState, useEffect, useRef } from "react";
+import { emitEvent } from "@/app/utils/eventbus";
 
-export default function useCharacterMovement(initialLeft = 0, initialBottom = (1/6 * window.innerHeight)) {
+export default function useCharacterMovement(
+  initialLeft = 0,
+  initialBottom = 1/6 * window.innerHeight
+) {
   const [left, setLeft] = useState(initialLeft);
   const [bottom, setBottom] = useState(initialBottom);
-  const [velocityY, setVelocityY] = useState(0); // börjar stilla
+  const [velocityY, setVelocityY] = useState(0);
   const [keysPressed, setKeysPressed] = useState({});
   const requestRef = useRef();
 
-  const gravity = 0.5;   // drar ner karaktären varje frame
-  const jumpStrength = 12; // hur högt karaktären hoppar
-  const moveSpeed = 5; // hur snabbt karaktären går
+  const gravity = 0.5;
+  const jumpStrength = 12;
+  const moveSpeed = 4;
 
   // Tangenttryck
   useEffect(() => {
     const handleKeyDown = (event) => {
       setKeysPressed(prev => ({ ...prev, [event.key]: true }));
-      // sätt velocityY när man trycker på hopp
+      // hoppa
       if ((event.key === "w" || event.key === "ArrowUp" || event.key === " ") && bottom === initialBottom) {
         setVelocityY(jumpStrength);
       }
     };
+
     const handleKeyUp = (event) => {
       setKeysPressed(prev => ({ ...prev, [event.key]: false }));
     };
@@ -35,22 +40,27 @@ export default function useCharacterMovement(initialLeft = 0, initialBottom = (1
 
   // Animation frame loop
   useEffect(() => {
-
     const animate = () => {
+      const movingLeft = keysPressed["a"] || keysPressed["ArrowLeft"];
+      const movingRight = keysPressed["d"] || keysPressed["ArrowRight"];
+      const isWalking = movingLeft || movingRight;
+
+      // Skicka start/stop walking-event
+      if (isWalking) {
+        emitEvent("walking-start");
+      } else {
+        emitEvent("walking-stop");
+      }
+
       // Horisontell rörelse
-      if (keysPressed["a"] || keysPressed["ArrowLeft"]) {
-        setLeft(prev => Math.max(prev - moveSpeed, 20));
-      }
-      if (keysPressed["d"] || keysPressed["ArrowRight"]) {
-        setLeft(prev => Math.min(prev + moveSpeed, window.innerWidth - 45));
-      }
+      if (movingLeft) setLeft(prev => Math.max(prev - moveSpeed, 20));
+      if (movingRight) setLeft(prev => Math.min(prev + moveSpeed, window.innerWidth - 45));
 
       // Vertikal rörelse (jump / gravitation)
       setBottom(prev => {
         let newBottom = prev + velocityY;
         let newVelocityY = velocityY - gravity;
 
-        // om vi når marken
         if (newBottom <= initialBottom) {
           newBottom = initialBottom;
           newVelocityY = 0;

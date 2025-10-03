@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 
-export default function useBlinkAnimation(frames, interval = 10000, frameDuration = 300) {
-  const [currentFrame, setCurrentFrame] = useState(0);
+export default function useBlinkAnimation(frames, interval = 10000, frameDuration = 200) {
+  const [currentFrame, setCurrentFrame] = useState(null);
 
   useEffect(() => {
     const blink = () => {
-      let i = 0;
-      const blinkInterval = setInterval(() => {
-        i++;
-        if (i >= frames.length) {
-          clearInterval(blinkInterval);
-          setCurrentFrame(0);
-        } else {
-          setCurrentFrame(i);
-        }
-      }, frameDuration);
+      frames.forEach((_, index) => {
+        setTimeout(() => {
+          setCurrentFrame(index);
+        }, index * frameDuration);
+      });
+
+      // Nollställ efter sista framen
+      setTimeout(() => {
+        setCurrentFrame(null);
+      }, frames.length * frameDuration);
     };
 
-    const blinkTimeout = setInterval(blink, interval);
+    blink(); // Kör direkt första gången
+    const blinkInterval = setInterval(blink, interval);
 
-    return () => clearInterval(blinkTimeout);
+    return () => clearInterval(blinkInterval);
   }, [frames, interval, frameDuration]);
 
   return currentFrame;

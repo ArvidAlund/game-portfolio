@@ -25,7 +25,7 @@ export default function Clouds({ amount }) {
   }, [amount]);
 
   return (
-    <section className="absolute top-0 w-full h-3/5 pointer-events-none overflow-hidden">
+    <section className="absolute top-0 w-full h-3/5 pointer-events-none overflow-hidden select-none">
       {clouds.map((cloud, index) => (
         <img
           key={index}

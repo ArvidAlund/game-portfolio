@@ -1,26 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { onEvent } from "@/app/utils/eventbus";
 
-export default function useWalkAnimation(frames, interval = 10000, frameDuration = 300) {
-  const [currentFrame, setCurrentFrame] = useState(0);
+export default function useWalkAnimation(frames, frameDuration = 300) {
+  const [currentFrame, setCurrentFrame] = useState(null);
+  const walkingRef = useRef(false); // håller reda på om vi går
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    const walk = () => {
+    // startar walking
+    const startWalking = () => {
+      walkingRef.current = true;
+
+      if (intervalRef.current) return; // om interval redan körs, gör inget
+
       let i = 0;
-      const blinkInterval = setInterval(() => {
-        i++;
-        if (i >= frames.length) {
-          clearInterval(blinkInterval);
-          setCurrentFrame(0);
-        } else {
-          setCurrentFrame(i);
-        }
+      intervalRef.current = setInterval(() => {
+        setCurrentFrame(i);
+        i = (i + 1) % frames.length; // loopar över frames
       }, frameDuration);
     };
 
-    const walkTimeout = setInterval(walk, interval);
+    // stoppar walking
+    const stopWalking = () => {
+      walkingRef.current = false;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        setCurrentFrame(null); // återställ till default frame
+      }
+    };
 
-    return () => clearInterval(walkTimeout);
-  }, [frames, interval, frameDuration]);
+    // Event-lyssnare
+    const unsubscribeStart = onEvent("walking-start", startWalking);
+    const unsubscribeStop = onEvent("walking-stop", stopWalking);
+
+    return () => {
+      clearInterval(intervalRef.current);
+      unsubscribeStart();
+      unsubscribeStop();
+    };
+  }, [frames, frameDuration]);
 
   return currentFrame;
 }
