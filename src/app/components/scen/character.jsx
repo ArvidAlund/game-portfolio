@@ -70,7 +70,7 @@ export default function Character() {
 
   return (
     <div
-      className="absolute mb-[-8px] scale-400 select-none Player"
+      className="absolute mb-[-8px] scale-400 select-none z-50 Player"
       style={{ left: `${left}px`, bottom:`${bottom}px` }}
       onClick={handlePlayerClick}
     >

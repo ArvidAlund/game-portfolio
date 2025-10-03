@@ -2,6 +2,7 @@ import { Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
 import "./CSS/card.css";
 import "./CSS/message.css";
+import "./CSS/House.css";
 
 const Press_Start = Press_Start_2P({
   variable: "--font-start",

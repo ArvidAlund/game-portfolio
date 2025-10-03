@@ -1,0 +1,27 @@
+.HouseText {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #f7efd8;
+  color: black;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+}
+
+.HouseText mark {
+  background: transparent;
+  font-weight: bold;
+}
+
+.HouseText::before {
+  content: "";
+  width: 10px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  background: #f7efd8;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
