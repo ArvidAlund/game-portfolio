@@ -22,6 +22,7 @@ export default function useCharacterMovement(
       // hoppa
       if ((event.key === "w" || event.key === "ArrowUp" || event.key === " ") && bottom === initialBottom) {
         setVelocityY(jumpStrength);
+        emitEvent("jump-start");
       }
     };
 
@@ -63,12 +64,18 @@ export default function useCharacterMovement(
 
         if (newBottom <= initialBottom) {
           newBottom = initialBottom;
+
+          if (velocityY !== 0) {
+            emitEvent("jump-stop");
+          }
+
           newVelocityY = 0;
         }
 
         setVelocityY(newVelocityY);
         return newBottom;
       });
+
 
       requestRef.current = requestAnimationFrame(animate);
     };

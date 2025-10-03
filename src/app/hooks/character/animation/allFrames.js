@@ -8,5 +8,12 @@ export const AllFrames = {
     "walkFrames":[
     "/pixelart/animate/Forward/step-1.png",
     "/pixelart/animate/Forward/step-2.png"
+    ],
+    "jumpFrames":[
+        "/pixelart/animate/Jump/jump1.png",
+        "/pixelart/animate/Jump/jump2.png",
+        "/pixelart/animate/Jump/jump3.png",
+        "/pixelart/animate/Jump/jump2.png",
+        "/pixelart/animate/Jump/jump1.png"
     ]
 }

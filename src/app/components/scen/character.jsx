@@ -1,6 +1,7 @@
 import useCharacterMovement from "@/app/hooks/character/movement/useCharacterMovement";
 import useBlinkAnimation from "@/app/hooks/character/animation/useBlinkAnimation";
 import useWalkAnimation from "@/app/hooks/character/animation/useWalkAnimation";
+import useJumpAnimation from "@/app/hooks/character/animation/useJumpAnimation";
 import Message from "./characterMessages";
 import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap/gsap-core";
@@ -13,10 +14,12 @@ export default function Character() {
   const { left, bottom } = useCharacterMovement(windowWidth / 2);
   const currentFrameBlink = useBlinkAnimation(AllFrames["blinkFrames"]);
   const currentFrameWalk = useWalkAnimation(AllFrames["walkFrames"]);
+  const currentFrameJump = useJumpAnimation(AllFrames["jumpFrames"]);
   const messageRef = useRef(null);
   const [talking, setTalking] = useState(false);
 
   function getCurrentFrameSrc() {
+    if (currentFrameJump !== null) return AllFrames["jumpFrames"][currentFrameJump];
     if (currentFrameWalk !== null) return AllFrames["walkFrames"][currentFrameWalk];
     if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
     return AllFrames["default"];
