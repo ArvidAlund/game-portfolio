@@ -3,6 +3,7 @@ import Character from "./components/scen/character"
 import StartScreen from "./components/scen/startScreen"
 import TipsContainer from "./components/scen/tipsContainer"
 import Terrain from "./components/scen/generateTerrain"
+import ChangeSide from "./hooks/animations/changeSide"
 import { useState, useMemo, useEffect } from "react"
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
           {terrainJSX} {/* Terrain genereras en gång */}
           <Character />
           {!menuClosed ? <StartScreen onClose={handleCloseStartScreen}/> : <TipsContainer />}
+          <ChangeSide/>
         </>
       )}
     </div>

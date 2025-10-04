@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { onEvent } from "@/app/utils/eventbus";
+import { onEvent, emitEvent } from "@/app/utils/eventbus";
 import { useRouter } from "next/navigation";
 
 
-export default function useEnterHouse(frames, frameDuration = 100, targetUrl = "/aboutme") {
+export default function useEnterHouse(frames, frameDuration = 500, targetUrl = "/aboutme") {
   const [currentFrame, setCurrentFrame] = useState(null);
   const intervalRef = useRef(null);
   const [showTransition, setShowTransition] = useState(false);
@@ -28,7 +28,7 @@ export default function useEnterHouse(frames, frameDuration = 100, targetUrl = "
         intervalRef.current = null;
         setCurrentFrame(null);
         router.push(targetUrl);
-      }, frameDuration * frames.length + 800); // frame + cirkel-animation
+      }, frameDuration); // frame + cirkel-animation
     };
 
     const unsubscribeStart = onEvent("EnterHouse", EnterHouse);
@@ -39,5 +39,8 @@ export default function useEnterHouse(frames, frameDuration = 100, targetUrl = "
     };
   }, [frames, frameDuration, router, targetUrl]);
 
+  if (showTransition){
+    emitEvent("CloseAnimation")
+  }
   return { currentFrame, showTransition };
 }
