@@ -24,7 +24,7 @@ export default function ChangeSide() {
       tl.fromTo(
         leftRef.current,
         { x: 0 },
-        { x: -leftRef.current.offsetWidth, duration: 1, ease: "power2.out" }
+        { x: -leftRef.current.offsetWidth, duration: 1, delay:0.5, ease: "power2.out" }
       ).fromTo(
         rightRef.current,
         { x: 0 },

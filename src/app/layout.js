@@ -3,6 +3,7 @@ import "./globals.css";
 import "./CSS/card.css";
 import "./CSS/message.css";
 import "./CSS/House.css";
+import "./CSS/door.css";
 import { WindowProvider } from "@/global/WindowContext";
 
 const Press_Start = Press_Start_2P({
