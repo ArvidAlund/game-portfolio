@@ -51,7 +51,7 @@ export default function House(){
     }, [showText])
 
     return <div className="absolute bottom-1/8 left-2/3 pixelated House1 select-none z-10" ref={houseRef}>
-        <div>
+        <div className="relative w-full h-full">
             <img src="/pixelart/houses/house2.png" alt="hus" />
             <div className="HouseText rounded-xl p-2 hidden" ref={TextRef}>
                 <h3>Bibloteket</h3>

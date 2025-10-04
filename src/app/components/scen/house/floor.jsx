@@ -1,16 +1,20 @@
+"use client"
 import { useEffect, useState } from "react";
+import { useWindow } from "@/global/WindowContext";
 
 export default function Floor({ img }) {
   const [tiles, setTiles] = useState(0);
+  const {windowWidth, windowHeight} = useWindow();
 
   useEffect(() => {
+
     const updateTiles = () => {
-      const screenWidth = window.innerWidth;
-      const tileWidth = 64; // bredden på din golvbild i px (ändra till rätt värde)
+      const screenWidth = windowWidth;
+      const tileWidth = 64; // pixelbredd på din tile
       setTiles(Math.ceil(screenWidth / tileWidth));
     };
 
-    updateTiles();
+    updateTiles(); // kör direkt vid mount
     window.addEventListener("resize", updateTiles);
     return () => window.removeEventListener("resize", updateTiles);
   }, []);

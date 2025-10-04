@@ -7,11 +7,12 @@ import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap/gsap-core";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 import useEnterHouse from "@/app/hooks/character/animation/useEnterHouse";
+import { useWindow } from "@/global/WindowContext";
 
 
 export default function Character() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { left, bottom } = useCharacterMovement(windowWidth / 2);
+  const {windowWidth, windowHeight} = useWindow();
+  const { left, bottom } = useCharacterMovement(windowWidth / 2, 1/6 * windowHeight);
   const currentFrameBlink = useBlinkAnimation(AllFrames["blinkFrames"]);
   const currentFrameWalk = useWalkAnimation(AllFrames["walkFrames"]);
   const currentFrameJump = useJumpAnimation(AllFrames["jumpFrames"]);
@@ -26,11 +27,6 @@ export default function Character() {
     if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
     return AllFrames["default"];
   }
-
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-  }, []);
 
   const handlePlayerClick = () => {
   if (!talking && messageRef.current) {

@@ -3,6 +3,7 @@ import "./globals.css";
 import "./CSS/card.css";
 import "./CSS/message.css";
 import "./CSS/House.css";
+import { WindowProvider } from "@/global/WindowContext";
 
 const Press_Start = Press_Start_2P({
   variable: "--font-start",
@@ -26,7 +27,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="sv">
       <body className={`${Press_Start.variable} ${VT.variable} antialiased`}>
-        {children}
+        <WindowProvider>
+          {children}
+        </WindowProvider>
       </body>
     </html>
   );

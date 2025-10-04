@@ -3,7 +3,7 @@ import { emitEvent } from "@/app/utils/eventbus";
 
 export default function useCharacterMovement(
   initialLeft = 0,
-  initialBottom = 1/6 * window.innerHeight
+  initialBottom = 0
 ) {
   const [left, setLeft] = useState(initialLeft);
   const [bottom, setBottom] = useState(initialBottom);
