@@ -18,6 +18,8 @@ export default function ChangeSide() {
       const tl = gsap.timeline({
         onComplete: () => {
           isAnimating.current = false; // redo för nästa gång
+          containerRef.current.style.height = 0;
+          containerRef.current.style.width = 0;
         }
       });
 
