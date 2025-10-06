@@ -7,6 +7,7 @@ import Character from "../components/scen/character"
 import Floor from "../components/scen/house/floor"
 import Door from "../components/scen/house/door"
 import Book from "../components/book/book"
+import PlayerUI from "../components/playerUI/playerUI"
 
 export default function Aboutme(){
     useEffect(()=>{
@@ -19,5 +20,6 @@ export default function Aboutme(){
     <Door img="/pixelart/assets/house/doors/wood.png"/>
     <Door img="/pixelart/assets/house/doors/wood.png" exit={true}/>
     <Book/>
+    <PlayerUI/>
     </section>
 }
