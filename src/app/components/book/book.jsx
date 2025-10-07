@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 import BookImages from "./bookimages";
 import TechStack from "../techStack";
+import ThreeInARow from "../games/threeInARow";
 
 function Page({ children, index }) {
   return (
@@ -168,7 +169,8 @@ export default function Book() {
 
     <Page key={12} index={13}>
         <h1>Sista sida / avslut</h1>
-        <p>Tack för att du bläddrade i min bok.</p>
+        <p>Spela lite tre i rad!</p>
+        <ThreeInARow/>
         </Page>,
 
       <Page key={13} index={14}>
