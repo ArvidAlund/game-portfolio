@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong, faLeftLong, faL } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { AllFrames } from "@/app/hooks/character/animation/allFrames";
+import BookImages from "./bookimages";
+import TechStack from "../techStack";
 
 function Page({ children, index }) {
   return (
@@ -20,41 +23,59 @@ export default function Book() {
   const rightPageRef = useRef(null);
   const flipContainerRef = useRef(null);
   const [summarizeFirst, setSummarizeFirst] = useState(true);
+  const [waveFrame, setWaveFrame] = useState(0);
+  const firstProjImg = ["/kod-bilder/vkbilen/1.png", "/kod-bilder/vkbilen/3.png"]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWaveFrame(prev => (prev === 1 ? 0 : 1));
+    }, 200);
+
+    return () => clearInterval(interval); // Clean up when component unmounts
+  }, []);
 
   const pages = [
     <Page key={0} index={1}><h1>Arvid Ålunds utvecklarresa</h1>
     <ul className="[&>li>h4]:text-[0.6rem] [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2">
         <li>
             <h4>Kapitel 1 – Starten</h4>
-            <p>2</p>
-        </li>
-        <li>
-            <h4>Kapitel 2 – Studier / Utbildning</h4>
             <p>3</p>
         </li>
         <li>
-            <h4>Kapitel 3 – Första riktiga projekt</h4>
-            <p>4</p>
-        </li>
-        <li>
-            <h4>Kapitel 4 – Från junior till fullstack</h4>
+            <h4>Kapitel 2 – Studier / Utbildning</h4>
             <p>5</p>
         </li>
         <li>
+            <h4>Kapitel 3 – Första riktiga projekt</h4>
+            <p>7</p>
+        </li>
+        <li>
+            <h4>Kapitel 4 – Från junior till fullstack</h4>
+            <p>9</p>
+        </li>
+        <li>
             <h4>Kapitel 5 – Vision / Framtid</h4>
-            <p>6</p>
+            <p>11</p>
         </li>
         <li>
             <h4>Sista sida / avslut</h4>
-            <p>7</p>
+            <p>13</p>
         </li>
     </ul>
     </Page>,
-
     <Page key={1} index={2}>
+      <p>Hej! Jag heter Arvid och jag bygger digitala världar med kod.</p>
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="w-1/2 items-center"><img src={AllFrames["waveFrames"][waveFrame]} alt="" className="pixelated w-full"/></div>
+      </div>
+    </Page>,
+
+    <Page key={2} index={3}>
         <h1>Kapitel 1 – Starten</h1>
-        <p>Jag har alltid fascinerats av programmering, men det var på gymnasiet jag tog det på riktigt. <br /><br /> Min första kod skrev jag i HTML, och nedan kan du se ett exempel på mitt allra första program.</p>
-        <div className="text-md border-2 mt-2 bg-neutral-200">
+        <p>Jag har alltid fascinerats av programmering, men det var på gymnasiet jag tog det på riktigt. <br /><br /> Min första kod skrev jag i HTML, var väldigt simpel och på andra sidan kan du se på mitt allra första kod.</p>
+    </Page>,
+    <Page key={3} index={4}>
+      <div className="text-md border-2 mt-2 bg-neutral-200">
         {"<h1>Största möjliga rubrik</h1>"}
         <br />
         {"<h2>Underrubrik nivå 2</h2>"}
@@ -67,11 +88,8 @@ export default function Book() {
         <br />
         {"<h6>Underrubrik nivå 6</h6>"}
         </div>
-
-
     </Page>,
-
-    <Page key={2} index={3}>
+    <Page key={4} index={5}>
         <h1>Kapitel 2 – Studier / Utbildning</h1>
         <ul className="[&>li>div>h4]:text-[0.6rem] [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:w-full [&>li>div]:flex [&>li>div]:justify-between [&>li>div]:items-center [&>li>p]:text-[0.8rem]">
             <li>
@@ -90,8 +108,10 @@ export default function Book() {
             </li>
         </ul>
         </Page>,
-
-    <Page key={3} index={4}>
+    <Page key={5} index={6}>
+      <p>Jag har insett att en väl fungerande webbplats uppnås genom användarcentrerad design, där användarens behov och en sömlös UX står i fokus.</p>
+    </Page>,
+    <Page key={6} index={7}>
         <h1>Kapitel 3 – Första riktiga projekt</h1>
         {summarizeFirst ? (
             <ul className="[&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:w-full [&>li]:flex [&>li>p:first-child]:font-bold [&>li>p:first-child]:text-start [&>li>p:first-child]:mr-1">
@@ -126,20 +146,33 @@ export default function Book() {
 
         {/* <button className="cursor-pointer border-2 p-2 rounded-lg absolute bottom-4 left-4" onClick={() => setSummarizeFirst(prev => !prev)}>{summarizeFirst ? "Utvidga" : "Sammanfatta"}</button> */}
         </Page>,
+        <Page key={7} index={8}>
+          <BookImages images={firstProjImg}/>
+        </Page>,
 
-    <Page key={4} index={5}>
+    <Page key={8} index={9}>
         <h1>Kapitel 4 – Från junior till fullstack</h1>
         <p>En ny sida i boken öppnas…</p>
         </Page>,
+    <Page key={9} index={10}>
+        <TechStack/>
+        </Page>,
 
-    <Page key={5} index={6}>
+    <Page key={10} index={11}>
         <h1>Kapitel 5 – Vision / Framtid</h1>
         <p>En ny sida i boken öppnas…</p>
         </Page>,
-
-    <Page key={6} index={7}>
-        <h1>Sista sida / avslut</h1>
+      <Page key={11} index={12}>
         <p>En ny sida i boken öppnas…</p>
+        </Page>,
+
+    <Page key={12} index={13}>
+        <h1>Sista sida / avslut</h1>
+        <p>Tack för att du bläddrade i min bok.</p>
+        </Page>,
+
+      <Page key={13} index={14}>
+        <button>Stäng boken</button>
         </Page>,
   ];
 

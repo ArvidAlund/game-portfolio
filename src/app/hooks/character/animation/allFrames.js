@@ -16,5 +16,9 @@ export const AllFrames = {
         "/pixelart/animate/Jump/jump3.png",
         "/pixelart/animate/Jump/jump2.png",
         "/pixelart/animate/Jump/jump1.png"
+    ],
+    "waveFrames":[
+        "/pixelart/animate/wave/step1.png",
+        "/pixelart/animate/wave/step2.png"
     ]
 }
