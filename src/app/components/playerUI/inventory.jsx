@@ -27,7 +27,7 @@ export default function Inventory(){
     return <section className="flex gap-5 items-center justify-center">
         {slots.map((slot, index) => (
             <div key={index} className={`relative h-18 aspect-square rounded-md transition-all duration-75 ${active === index ? "border-4":"border-2"}`}>
-                <img src={slot} alt="" className="w-full h-full object-fill"/>
+                <img src={slot} alt="" className="w-full h-full object-fill pixelated"/>
                 <div className="absolute bottom-0 right-1 h-fit">{index + 1}</div>
                 </div>
         ))}
