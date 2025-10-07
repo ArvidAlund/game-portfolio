@@ -1,4 +1,5 @@
 import PlayerXp from "./playerXp"
+import Inventory from "./inventory"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect, useRef } from "react"
@@ -29,6 +30,7 @@ export default function PlayerUI(){
 
     return <section className="fixed top-0 left-0 w-full h-1/10 flex justify-between z-20" ref={uiRef}>
         <PlayerXp/>
+        <Inventory/>
         <button className="cursor-pointer p-8 text-2xl" onClick={()=>setOpenPause(prev=>!prev)}><FontAwesomeIcon icon={openPause ? faPlay : faPause}/></button>
     </section>
 }

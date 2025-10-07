@@ -3,7 +3,6 @@ import { useState } from "react";
 
 export default function ThreeInARow() {
   const [cells, setCells] = useState(Array(9).fill(null));
-  const [turn, setTurn] = useState("X");
 
   function makeMove(index) {
     // Om rutan är upptagen eller spelet är slut, gör inget

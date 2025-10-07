@@ -181,7 +181,7 @@ export default function Book() {
   const flipPage = (direction) => {
     if (isFlipping) return;
     if (page === 0 && direction != "next") return;
-    if (page === 5 && direction === "next") return;
+    if (page === 12 && direction === "next") return;
     setIsFlipping(true);
 
     const nextPage = direction === "next" ? page + 2 : page - 2;
