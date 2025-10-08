@@ -3,11 +3,12 @@ import useBlinkAnimation from "@/app/hooks/character/animation/useBlinkAnimation
 import useWalkAnimation from "@/app/hooks/character/animation/useWalkAnimation";
 import useJumpAnimation from "@/app/hooks/character/animation/useJumpAnimation";
 import Message from "./characterMessages";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap/gsap-core";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 import useEnterHouse from "@/app/hooks/character/animation/useEnterHouse";
 import { useWindow } from "@/global/WindowContext";
+import { onEvent } from "@/app/utils/eventbus";
 
 /**
  * Character – huvudkomponenten för spelarens karaktär på skärmen.
@@ -36,17 +37,30 @@ export default function Character() {
   const messageRef = useRef(null); // Referens till textbubblan ovanför karaktären
   const [talking, setTalking] = useState(false); // Indikerar om karaktären pratar just nu
 
+  const [canMove, setCanMove] = useState(true);
   /**
    * Returnerar rätt sprite-bild beroende på animationstillstånd.
    * Prioritering: transition (in i hus) > hopp > gång > blink > default.
    */
   function getCurrentFrameSrc() {
+    if (!canMove){
+      if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
+      return AllFrames["default"];
+    } 
     if (showTransition) return AllFrames["back"];
     if (currentFrameJump !== null) return AllFrames["jumpFrames"][currentFrameJump];
     if (currentFrameWalk !== null) return AllFrames["walkFrames"][currentFrameWalk];
     if (currentFrameBlink !== null) return AllFrames["blinkFrames"][currentFrameBlink];
     return AllFrames["default"];
   }
+
+  useEffect(() => {
+    const unsubscribe = onEvent("CanMove", (detail) => {
+      setCanMove(detail);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   /**
    * Hanterar klick på karaktären – visar en tillfällig pratbubbla.

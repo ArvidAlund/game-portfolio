@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { emitEvent } from "@/app/utils/eventbus";
+import { emitEvent, onEvent } from "@/app/utils/eventbus";
 
 /**
  * useCharacterMovement – Hook som hanterar karaktärens rörelse och fysik.
@@ -30,6 +30,7 @@ export default function useCharacterMovement(
   initialLeft = 0,
   initialBottom = 0
 ) {
+  const [canMove, setCanMove] = useState(true);
   const [left, setLeft] = useState(initialLeft);
   const [bottom, setBottom] = useState(initialBottom);
   const [velocityY, setVelocityY] = useState(0);
@@ -45,6 +46,7 @@ export default function useCharacterMovement(
     const handleKeyDown = (event) => {
       setKeysPressed(prev => ({ ...prev, [event.key]: true }));
       // Hoppa
+      if (!canMove) return
       if ((event.key === "w" || event.key === "ArrowUp" || event.key === " ") && bottom === initialBottom) {
         setVelocityY(jumpStrength);
         emitEvent("jump-start");
@@ -64,9 +66,18 @@ export default function useCharacterMovement(
     };
   }, [bottom]);
 
+  useEffect(() => {
+    const unsubscribe = onEvent("CanMove", (detail) => {
+      setCanMove(detail);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   // Animation frame loop
   useEffect(() => {
     const animate = () => {
+      if (!canMove) return
       const movingLeft = keysPressed["a"] || keysPressed["ArrowLeft"];
       const movingRight = keysPressed["d"] || keysPressed["ArrowRight"];
       const isWalking = movingLeft || movingRight;

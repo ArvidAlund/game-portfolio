@@ -7,7 +7,7 @@ import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 import BookImages from "./bookimages";
 import TechStack from "../techStack";
 import ThreeInARow from "../games/threeInARow";
-import { onEvent } from "@/app/utils/eventbus";
+import { emitEvent, onEvent } from "@/app/utils/eventbus";
 
 /* 
 --------------------------------------------------
@@ -78,6 +78,14 @@ export default function Book() {
           detail === 0 ? setIsVisible(true) : setIsVisible(false);
         })
     }, [])
+
+  useEffect(()=>{
+    if (isVisible){
+      emitEvent("CanMove", false);
+    } else {
+      emitEvent("CanMove", true);
+    }
+  },[isVisible])
 
   /* 
   --------------------------------------------------
@@ -231,7 +239,7 @@ export default function Book() {
         </Page>,
 
       <Page key={13} index={14}>
-        <button>Stäng boken</button>
+        <button onClick={()=>setIsVisible(false)}>Stäng boken</button>
         </Page>,
   ];
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { emitEvent } from "@/app/utils/eventbus";
 import Card from "../card";
 import { gsap } from "gsap";
 import { useState, useEffect, useRef } from "react";
@@ -44,9 +45,14 @@ export default function StartScreen({ onClose }) {
 
       setTimeout(() => {
         onClose();
+        emitEvent("CanMove", true);
       }, 1000);
     }
   }, [startGame]);
+
+  useEffect(()=>{
+    emitEvent("CanMove", false);
+  },[])
 
   return (
     <section className="absolute w-full h-full z-50 flex flex-col items-center justify-center overflow-hidden">
