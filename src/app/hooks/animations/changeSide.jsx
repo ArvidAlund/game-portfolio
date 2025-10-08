@@ -56,6 +56,9 @@ export default function ChangeSide() {
 
       containerRef.current.style.display = "block";
 
+      containerRef.current.style.height = "100%";
+      containerRef.current.style.width = "100%";
+
       const tl = gsap.timeline({
         onComplete: () => {
           isAnimating.current = false;

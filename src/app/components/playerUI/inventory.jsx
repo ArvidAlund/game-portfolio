@@ -36,7 +36,8 @@ export default function Inventory() {
   // ------------------------------------------------------------
   // STATE
   // ------------------------------------------------------------
-  const [slots, setSlots] = useState(Array(5).fill(null)); // 5 tomma slots
+  const [slots, setSlots] = useState(Array(5).fill(null))
+ // 5 tomma slots
   const [active, setActive] = useState(null);              // aktiv slot
   const InventoryItems = ["/pixelart/assets/misc/book.png"]
   // ------------------------------------------------------------
@@ -61,15 +62,25 @@ export default function Inventory() {
     };
   }, []);
 
-  useEffect(()=>{
-    onEvent("addItemInventory", (detail)=>{
+  
+  useEffect(() => {
+    const saved = localStorage.getItem("inventory");
+    if (saved) setSlots(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    const handleAddItem = (detail) => {
       setSlots((prev) => {
         const newSlots = [...prev];
         newSlots[detail] = InventoryItems[detail];
+        localStorage.setItem("inventory", JSON.stringify(newSlots));
         return newSlots;
       });
-    })
-  }, [])
+    };
+
+    const unsubscribe = onEvent("addItemInventory", handleAddItem);
+    return () => unsubscribe?.(); // eller annan cleanup beroende på din eventbus
+  }, []);
 
   // ------------------------------------------------------------
   // EFFECT: Emittera aktiv slot via eventbus
@@ -87,7 +98,7 @@ export default function Inventory() {
         <div
           key={index}
           className={`relative h-18 aspect-square rounded-md transition-all duration-75 
-            ${active === index ? "border-4" : "border-2"}`}
+            ${active === index ? "border-4 scale-110" : "border-2"}`}
         >
           {/* Slotbild */}
           <img src={slot} alt="" className="w-full h-full object-fill pixelated" />

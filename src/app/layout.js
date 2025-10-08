@@ -7,6 +7,7 @@ import "./CSS/door.css";
 import { WindowProvider } from "@/global/WindowContext";
 import PlayerUI from "./components/playerUI/playerUI"
 import PauseMenu from "./components/playerUI/pauseMenu"
+import Book from "./components/book/book";
 
 const Press_Start = Press_Start_2P({
   variable: "--font-start",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           {children}
           <PlayerUI/>
           <PauseMenu/>
+          <Book/>
         </WindowProvider>
       </body>
     </html>

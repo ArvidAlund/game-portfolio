@@ -21,6 +21,8 @@ export default function Home() {
       setTerrainReady(true)
     }, 1000) // t.ex. 1 sekund “laddning”
     
+    localStorage.clear();
+    
     return () => clearTimeout(timeout)
   }, [])
 

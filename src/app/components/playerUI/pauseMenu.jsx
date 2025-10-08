@@ -16,7 +16,7 @@ export default function PauseMenu(){
       }, []);
     return <section className={`absolute left-1/2 top-1/2 -translate-1/2 ${isVisible ? "w-full h-full flex" : "w-0 h-0 hidden"} backdrop-blur-[2px] transition-all duration-75 z-60 justify-center items-center`}>
         <div className="w-1/2 h-2/3 text-center text-black flex flex-col gap-4 justify-center">
-            <h1 className="text-2xl">Spelet pausat</h1>
+            <h1 className="text-2xl text-shadow-xs text-shadow-gray-100 bg-[#f7efd8] p-2 rounded mb-10">Spelet pausat</h1>
             <MenuButton text="Återgå till spelet" onClick={()=> {
                 emitEvent("closePause");
                 setIsVisible(false);
