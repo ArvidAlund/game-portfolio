@@ -21,12 +21,21 @@ export default function Book() {
   const [xpTakenList, setXpTakenList] = useState([0]);
 
   useEffect(() => {
-        onEvent("inventory", (detail) =>{
+        const offInventory = onEvent("inventory", (detail) =>{
           if (detail === null){
             setIsVisible(false);
           }
           detail === 0 ? setIsVisible(true) : setIsVisible(false);
         })
+
+        const offChapter = onEvent("chapterRedirect", (pageIndex) => {
+          setPage(pageIndex);
+        });
+
+        return () => {
+          offInventory?.();
+          offChapter?.();
+        };
     }, [])
 
   useEffect(()=>{
@@ -89,11 +98,7 @@ export default function Book() {
 
         {/* Höger sida */}
         <div ref={rightPageRef} className="relative w-1/2 h-full transform-gpu">
-          {pages[page + 1] || (
-            <Page>
-              <p className="text-center mt-20">Slut på boken 📘</p>
-            </Page>
-          )}
+          {pages[page + 1]}
         </div>
 
         {/* Bokrygg */}
