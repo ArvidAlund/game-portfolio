@@ -156,8 +156,8 @@ För att köra projektet lokalt:
 ## 📫 Contact
 
 Arvid Ålund
-LinkedIn
-• GitHub
+[LinkedIn](https://www.linkedin.com/in/arvid-%C3%A5lund-6037342a3/)
+• [GitHub](https://github.com/ArvidAlund)
 
 Projektlänk: https://github.com/ArvidAlund/game-portfolio
 
@@ -166,3 +166,16 @@ Projektlänk: https://github.com/ArvidAlund/game-portfolio
 ## 🧾 License
 
 Distributed under the MIT License. See LICENSE.txt for more information.
+
+[contributors-shield]: https://img.shields.io/github/contributors/ArvidAlund/game-portfolio.svg?style=for-the-badge
+[contributors-url]: https://github.com/ArvidAlund/game-portfolio/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ArvidAlund/game-portfolio.svg?style=for-the-badge
+[forks-url]: https://github.com/ArvidAlund/game-portfolio/network/members
+[stars-shield]: https://img.shields.io/github/stars/ArvidAlund/game-portfolio.svg?style=for-the-badge
+[stars-url]: https://github.com/ArvidAlund/game-portfolio/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ArvidAlund/game-portfolio.svg?style=for-the-badge
+[issues-url]: https://github.com/ArvidAlund/game-portfolio/issues
+[license-shield]: https://img.shields.io/github/license/ArvidAlund/game-portfolio.svg?style=for-the-badge
+[license-url]: https://github.com/ArvidAlund/game-portfolio/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/arvid-%C3%A5lund-6037342a3/
