@@ -7,7 +7,6 @@ import Character from "../components/scen/character"
 import Floor from "../components/scen/house/floor"
 import Door from "../components/scen/house/door"
 import Book from "../components/book/book"
-import PlayerUI from "../components/playerUI/playerUI"
 import PickupBook from "../components/book/bookPickup"
 
 export default function Aboutme(){
@@ -21,7 +20,6 @@ export default function Aboutme(){
     <Door img="/pixelart/assets/house/doors/wood.png"/>
     <Door img="/pixelart/assets/house/doors/wood.png" exit={true}/>
     <Book/>
-    <PlayerUI/>
     <PickupBook/>
     </section>
 }

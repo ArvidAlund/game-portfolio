@@ -1,9 +1,12 @@
+"use client"
+
 import PlayerXp from "./playerXp";
 import Inventory from "./inventory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap/gsap-core";
+import { emitEvent, onEvent } from "@/app/utils/eventbus";
 
 /**
  * PlayerUI – huvudkomponenten för spelarens gränssnitt.
@@ -41,10 +44,18 @@ export default function PlayerUI() {
 
     window.addEventListener("keydown", handleKeyDown);
 
+    onEvent("closePause", ()=>{
+      setOpenPause(false)
+    })
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  useEffect(() =>{
+    emitEvent("OpenPause", openPause);
+  },[openPause])
 
   return (
     <section
@@ -62,7 +73,7 @@ export default function PlayerUI() {
         className="cursor-pointer p-8 text-2xl"
         onClick={() => setOpenPause((prev) => !prev)}
       >
-        <FontAwesomeIcon icon={openPause ? faPlay : faPause} />
+        <FontAwesomeIcon icon={openPause ? faPause : faPlay} />
       </button>
     </section>
   );

@@ -39,7 +39,7 @@ export default function Book() {
   // Hindrar flera bläddringar samtidigt
   const [isFlipping, setIsFlipping] = useState(false);
   // Ska boken synas
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Refs för DOM-element (används av GSAP)
   const leftPageRef = useRef(null);

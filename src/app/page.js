@@ -5,7 +5,6 @@ import TipsContainer from "./components/scen/tipsContainer"
 import Terrain from "./components/scen/generateTerrain"
 import ChangeSide from "./hooks/animations/changeSide"
 import { useState, useMemo, useEffect } from "react"
-import PlayerUI from "./components/playerUI/playerUI"
 
 export default function Home() {
   const [menuClosed, setMenuClosed] = useState(false)
@@ -32,7 +31,7 @@ export default function Home() {
   return (
     <div className="bg-[rgb(1,173,255)] h-screen w-full relative overflow-hidden">
       {!terrainReady ? (
-        <div className="flex justify-center items-center h-full text-white text-4xl">
+        <div className="absolute flex justify-center items-center h-full w-full text-white text-4xl z-100 bg-[rgb(1,173,255)]">
           Loading...
         </div>
       ) : (
@@ -41,7 +40,6 @@ export default function Home() {
           <Character />
           {!menuClosed ? <StartScreen onClose={handleCloseStartScreen}/> : <TipsContainer />}
           <ChangeSide/>
-          <PlayerUI/>
         </>
       )}
     </div>

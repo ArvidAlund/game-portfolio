@@ -5,6 +5,8 @@ import "./CSS/message.css";
 import "./CSS/House.css";
 import "./CSS/door.css";
 import { WindowProvider } from "@/global/WindowContext";
+import PlayerUI from "./components/playerUI/playerUI"
+import PauseMenu from "./components/playerUI/pauseMenu"
 
 const Press_Start = Press_Start_2P({
   variable: "--font-start",
@@ -30,6 +32,8 @@ export default function RootLayout({ children }) {
       <body className={`${Press_Start.variable} ${VT.variable} antialiased`}>
         <WindowProvider>
           {children}
+          <PlayerUI/>
+          <PauseMenu/>
         </WindowProvider>
       </body>
     </html>

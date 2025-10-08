@@ -4,6 +4,7 @@ import { emitEvent } from "@/app/utils/eventbus";
 import Card from "../card";
 import { gsap } from "gsap";
 import { useState, useEffect, useRef } from "react";
+import MenuButton from "../menuButton";
 
 /**
  * StartScreen – visuell introduktion innan spelet startar.
@@ -72,13 +73,10 @@ export default function StartScreen({ onClose }) {
       </div>
 
       {/* Startknapp */}
-      <button
-        className="border-2 border-black rounded-lg p-2 mb-5 text-black text-2xl bg-white cursor-pointer hover:!scale-110"
-        ref={buttonRef}
-        onClick={() => setStartGame((prev) => !prev)}
-      >
-        Starta äventyret
-      </button>
+      <MenuButton 
+        text="Starta äventyret"
+        onClick={() => setStartGame((prev) => !prev)} 
+        ref={buttonRef}/>
     </section>
   );
 }
