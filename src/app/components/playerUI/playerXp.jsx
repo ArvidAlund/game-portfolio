@@ -1,26 +1,34 @@
-/**
- * PlayerXp – visar spelarens erfarenhetspoäng (XP) i form av en progressbar.
- *
- * @param {number} xp - Spelarens nuvarande XP (standardvärde: 50)
- *
- * Komponentens uppgift är att:
- * - Beräkna spelarens aktuella nivå baserat på definierade nivågränser.
- * - Visa en visuell XP-bar som fylls proportionerligt mot nästa nivå.
- * - Visa text med aktuell XP och XP-kravet för nästa nivå.
- */
-export default function PlayerXp({ xp = 50 }) {
-  // Definierade nivågränser — varje värde representerar XP som krävs för att nå nästa nivå
-  const levels = [100, 200, 250, 400];
-  const levelXp = [100, 200, 250, 400]; // Separat array för enkel åtkomst till XP per nivå
+import { onEvent } from "@/app/utils/eventbus";
+import { useEffect, useState } from "react";
 
-  // Hitta aktuell nivå (första nivån vars XP-krav är högre än spelarens XP)
-  let currentLevel = levels.findIndex((lvlXp) => xp < lvlXp);
+export default function PlayerXp({ startXp = 0 }) {
+  const [xp, setXp] = useState(startXp);
 
-  // Om spelaren har mer XP än sista nivån → maxnivå
-  if (currentLevel === -1) currentLevel = levels.length;
+  // Definierade nivågränser
+  const levelXp = [100, 200, 250, 400];
 
-  // Beräkna hur stor andel av XP-baren som ska fyllas (max 100 %)
-  const fillPercent = Math.min((xp / levelXp[currentLevel]) * 100, 100);
+  // Beräkna aktuell nivå och XP mot den nivån
+  let remainingXp = xp;
+  let currentLevel = 0;
+
+  while (currentLevel < levelXp.length && remainingXp >= levelXp[currentLevel]) {
+    remainingXp -= levelXp[currentLevel];
+    currentLevel++;
+  }
+
+  // Fyllnadsprocent för progressbar
+  const fillPercent =
+    currentLevel < levelXp.length
+      ? Math.min((remainingXp / levelXp[currentLevel]) * 100, 100)
+      : 100; // maxnivå
+
+  useEffect(() => {
+    const unsubscribe = onEvent("AddXp", (amount) => {
+      setXp((prev) => prev + amount);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="w-1/3 flex p-2 items-center">
@@ -34,9 +42,10 @@ export default function PlayerXp({ xp = 50 }) {
       </div>
 
       {/* Textvisning: nuvarande XP / XP till nästa nivå */}
-      <div className="flex flex-nowrap w-25">
-        <span className="flex">
-          {xp} / {levelXp[currentLevel]} XP
+      <div className="flex flex-nowrap w-30">
+        <span className="flex flex-col">
+          <p>lvl {currentLevel}</p>
+          <p>{remainingXp} / {currentLevel < levelXp.length ? levelXp[currentLevel] : "MAX"} XP</p>
         </span>
       </div>
     </div>

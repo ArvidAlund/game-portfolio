@@ -41,5 +41,5 @@ export default function PickupBook(){
             BookRef.current.remove();
         }
       },[nearPlayer])
-    return <div className="absolute bottom-1/7 left-2/3 h-15" ref={BookRef}><img src="/pixelart/assets/misc/book.png" alt="book" className="w-full h-full object-contain"/></div>
+    return <div className="absolute bottom-1/7 left-2/3 h-20" ref={BookRef}><img src="/pixelart/assets/misc/book.png" alt="book" className="w-full h-full object-contain"/></div>
 }

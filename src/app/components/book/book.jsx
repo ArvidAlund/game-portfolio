@@ -1,6 +1,6 @@
 "use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRightLong, faLeftLong, faL } from "@fortawesome/free-solid-svg-icons";
+import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
@@ -54,6 +54,8 @@ export default function Book() {
 
    // Bilder till första projektet (används av BookImages-komponenten)
   const firstProjImg = ["/kod-bilder/vkbilen/1.png", "/kod-bilder/vkbilen/3.png"]
+
+  const [xpTakenList, setXpTakenList] = useState([0]);
 
   /* 
   --------------------------------------------------
@@ -266,6 +268,14 @@ export default function Book() {
       onComplete: () => {
         setPage(validPage); // uppdaterar aktuell sida
         gsap.set(flippingRef.current, { rotateY: 0 }); // nollställer rotering
+        if (!xpTakenList.includes(validPage)) {
+          emitEvent("AddXp", 60);
+        }
+        setXpTakenList((prev)=>{
+          const newList = [...prev]
+          newList.push(validPage);
+          return newList
+        })
         setIsFlipping(false);
       },
     });
