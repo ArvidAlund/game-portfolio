@@ -22,8 +22,8 @@ export default function TechStack() {
       "react",
       "nextjs2",
       "vitejs",
-      "tailwindcss",
       "astro",
+      "tailwindcss",
       "gsap",
       "threejs",
     ],
@@ -49,7 +49,7 @@ export default function TechStack() {
                 <StackIcon name={tech} />
 
                 {/* Namn som visas vid hover */}
-                <span className="mt-1 text-xs text-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="mt-1 text-md text-center opacity-0 group-hover:opacity-100 transition-opacity select-none">
                   {tech}
                 </span>
               </div>

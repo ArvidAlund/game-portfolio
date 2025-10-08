@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-start: var(--font-start);
   --font-vt323: var(--font-vt323);
+  --font-inter: var(--font-inter);
 }
 
 @media (prefers-color-scheme: dark) {

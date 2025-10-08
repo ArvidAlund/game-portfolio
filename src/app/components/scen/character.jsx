@@ -122,7 +122,7 @@ export default function Character() {
         {/* Pratbubbla – visas temporärt vid klick */}
         <p
           ref={messageRef}
-          className="absolute bottom-full w-[130%] text-[0.2rem] text-center text-black bg-[#f7efd8] rounded-lg p-1 hidden message opacity-0"
+          className="absolute bottom-full w-[130%] text-[0.3rem] text-center text-black bg-[#f7efd8] rounded-lg p-1 hidden message opacity-0"
         ></p>
       </div>
     </div>

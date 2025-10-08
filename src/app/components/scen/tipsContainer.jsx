@@ -35,7 +35,7 @@ export default function TipsContainer() {
     >
       {/* Piltangenter */}
       <div className="text-center">
-        <p className="text-lg">Gå med piltangenterna</p>
+        <p className="text-xl">Gå med piltangenterna</p>
         <div className="grid grid-cols-3 gap-2 mt-4 [&_div]:text-center [&_div]:border-2 [&_div]:rounded-sm [&_div]:w-10 [&_div]:aspect-square [&_div]:items-center [&_div]:justify-center [&_div]:flex">
           <div className="col-start-2 col-span-1">
             <FontAwesomeIcon icon={faArrowUp} />
@@ -54,7 +54,7 @@ export default function TipsContainer() {
 
       {/* WASD */}
       <div className="text-center">
-        <p className="text-lg">Gå med WASD</p>
+        <p className="text-xl">Gå med WASD</p>
         <div className="grid grid-cols-3 gap-2 mt-4 [&_div]:text-center [&_div]:border-2 [&_div]:rounded-sm [&_div]:w-10 [&_div]:aspect-square [&_div]:items-center [&_div]:justify-center [&_div]:flex">
           <div className="col-start-2 col-span-1">W</div>
           <div className="col-start-1">A</div>

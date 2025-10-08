@@ -80,9 +80,9 @@ export default function House() {
 
         {/* Text-bubbla som visas när spelaren är nära */}
         <div className="HouseText rounded-xl p-2 hidden" ref={TextRef}>
-          <h3>Bibloteket</h3>
-          <p className="text-lg">Upptäck mer om mig och min resa.</p>
-          <p className="text-xs">Tryck <mark>Enter</mark> för att gå in</p>
+          <h3 className="text-2xl">Bibloteket</h3>
+          <p className="text-xl">Upptäck mer om mig och min resa.</p>
+          <p className="text-lg">Tryck <mark>Enter</mark> för att gå in</p>
         </div>
       </div>
     </div>

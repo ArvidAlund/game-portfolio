@@ -1,4 +1,4 @@
-import { Press_Start_2P, VT323 } from "next/font/google";
+import { Press_Start_2P, VT323, Inter } from "next/font/google";
 import "./globals.css";
 import "./CSS/card.css";
 import "./CSS/message.css";
@@ -11,12 +11,16 @@ import Book from "./components/book/book";
 
 const Press_Start = Press_Start_2P({
   variable: "--font-start",
-  weight: ["400"],   // Vikt måste anges som array av strängar
+  weight: ["400"],
 })
 
 const VT = VT323({
   variable: "--font-vt323",
-  weight: ["400"],   // Även här, måste vara array
+  weight: ["400"],
+})
+
+const inter = Inter({
+  variable: "--font-inter",
 })
 
 export const metadata = {
@@ -30,7 +34,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="sv">
-      <body className={`${Press_Start.variable} ${VT.variable} antialiased`}>
+      <body className={`${Press_Start.variable} ${VT.variable} ${inter.variable} antialiased`}>
         <WindowProvider>
           {children}
           <PlayerUI/>

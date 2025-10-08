@@ -43,7 +43,7 @@ export default function PlayerXp({ startXp = 0 }) {
 
       {/* Textvisning: nuvarande XP / XP till nästa nivå */}
       <div className="flex flex-nowrap w-30">
-        <span className="flex flex-col">
+        <span className="flex flex-col text-xl">
           <p>lvl {currentLevel}</p>
           <p>{remainingXp} / {currentLevel < levelXp.length ? levelXp[currentLevel] : "MAX"} XP</p>
         </span>

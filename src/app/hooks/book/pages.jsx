@@ -7,7 +7,7 @@ import TechStack from "@/app/components/techStack";
 
 function Page({ children, index }) {
   return (
-    <div className="absolute inset-0 bg-[#d8c59a] text-[#2b1b0d] p-4 font-[VT323] text-xl border-4 border-[#9b8657] pixel-border box-border overflow-hidden [&>h1]:text-base [&>h1]:uppercase [&>h1]:mb-3 [&>h1]:border-b-2">
+    <div className="absolute inset-0 bg-[#d8c59a] text-black p-4 text-xl border-4 border-[#9b8657] pixel-border box-border overflow-hidden [&>h1]:uppercase [&>h1]:mb-3 [&>h1]:border-b-2 tracking-wide font-inter">
       {children}
       <p className={`absolute bottom-0 ${index % 2 === 0 ? "right-2" : "left-2"}`}>{index}</p>
     </div>
@@ -29,8 +29,9 @@ useEffect(() => {
   }, []);
 
 const bookPages = [
-    <Page key={0} index={1}><h1>Arvid Ålunds utvecklarresa</h1>
-    <ul className="[&>li>h4]:text-[0.6rem] [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2">
+    <Page key={0} index={1}>
+    <h1>Arvid Ålunds utvecklarresa</h1>
+    <ul className="[&>li>h4]:text-lg! [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2">
         <li>
             <h4>Kapitel 1 – Starten</h4>
             <p>3</p>
