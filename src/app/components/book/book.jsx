@@ -7,6 +7,7 @@ import { AllFrames } from "@/app/hooks/character/animation/allFrames";
 import BookImages from "./bookimages";
 import TechStack from "../techStack";
 import ThreeInARow from "../games/threeInARow";
+import { onEvent } from "@/app/utils/eventbus";
 
 /* 
 --------------------------------------------------
@@ -37,6 +38,8 @@ export default function Book() {
   const [page, setPage] = useState(0);
   // Hindrar flera bläddringar samtidigt
   const [isFlipping, setIsFlipping] = useState(false);
+  // Ska boken synas
+  const [isVisible, setIsVisible] = useState(true);
 
   // Refs för DOM-element (används av GSAP)
   const leftPageRef = useRef(null);
@@ -65,6 +68,16 @@ export default function Book() {
 
     return () => clearInterval(interval); // Clean up when component unmounts
   }, []);
+
+  useEffect(() => {
+        // Lägg till eventlyssnare
+        onEvent("inventory", (detail) =>{
+          if (detail === null){
+            setIsVisible(false);
+          }
+          detail === 0 ? setIsVisible(true) : setIsVisible(false);
+        })
+    }, [])
 
   /* 
   --------------------------------------------------
@@ -276,7 +289,7 @@ export default function Book() {
   --------------------------------------------------
   */
   return (
-    <main className="absolute w-2/3 max-w-[1000px] aspect-[3/2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#bca878] border-8 border-[#7e6841] shadow-[4px_4px_0_#2a1c10] pixel-border overflow-hidden z-50">
+    <main className={`absolute max-w-[1000px] aspect-[3/2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#bca878] border-[#7e6841] shadow-[4px_4px_0_#2a1c10] pixel-border overflow-hidden z-50 transition-all duration-200 ${isVisible ? "w-2/3 border-8" : "w-0 border-0"}`}>
       <div ref={flipContainerRef} className="relative w-full h-full flex">
         {/* Vänster sida */}
         <div ref={leftPageRef} className="relative w-1/2 h-full transform-gpu">
