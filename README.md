@@ -164,7 +164,7 @@ Projektlänk: https://github.com/ArvidAlund/game-portfolio
 
 ## 🧾 License
 
-Distributed under the MIT License. See LICENSE.txt for more information.
+Distributed under the MIT License. See <a href="/LICENSE.txt">LICENSE.txt</a> for more information.
 
 [contributors-shield]: https://img.shields.io/github/contributors/ArvidAlund/game-portfolio.svg?style=for-the-badge
 [contributors-url]: https://github.com/ArvidAlund/game-portfolio/graphs/contributors
