@@ -1,34 +1,50 @@
 "use client";
 import { useState } from "react";
 
+/**
+ * En enkel "Tre i rad" (tic-tac-toe) komponent med en mänsklig spelare ("X")
+ * mot en enkel bot ("O") som gör slumpmässiga drag.
+ * 
+ * Spel-logiken hanteras helt lokalt via React state.
+ */
 export default function ThreeInARow() {
+  // Representerar spelbrädet som en array med 9 rutor (null, "X" eller "O")
   const [cells, setCells] = useState(Array(9).fill(null));
 
+  /**
+   * Hanterar spelarens drag.
+   * - Ignorerar klick om rutan redan är tagen eller om spelet är avgjort.
+   * - Uppdaterar brädet med spelarens drag och kollar om det leder till vinst.
+   * - Låter boten göra sitt drag efter en kort delay om spelet inte är slut.
+   */
   function makeMove(index) {
-    // Om rutan är upptagen eller spelet är slut, gör inget
     if (cells[index] || checkWinner(cells)) return;
 
     const newCells = [...cells];
-    newCells[index] = "X"; // Spelarens drag
+    newCells[index] = "X";
     setCells(newCells);
 
-    // Kolla om spelaren vann
     if (checkWinner(newCells)) return;
 
-    // Botens drag efter liten delay
+    // Simulerar botens drag efter en kort paus
     setTimeout(() => {
       makeBotMove(newCells);
     }, 500);
   }
 
+  /**
+   * Gör ett slumpmässigt drag för boten ("O") på en ledig ruta.
+   * - Beräknar tillgängliga index.
+   * - Väljer en av dem slumpmässigt.
+   * - Uppdaterar brädet med botens drag.
+   */
   function makeBotMove(currentCells) {
     const emptyIndexes = currentCells
       .map((val, i) => (val === null ? i : null))
       .filter((v) => v !== null);
 
-    if (emptyIndexes.length === 0) return; // fullt bräde
+    if (emptyIndexes.length === 0) return; // Brädet är fullt
 
-    // Välj en slumpmässig ledig ruta
     const randomIndex =
       emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
 
@@ -37,6 +53,11 @@ export default function ThreeInARow() {
     setCells(newCells);
   }
 
+  /**
+   * Kontrollerar om någon har vunnit.
+   * - Loopar genom alla vinstkombinationer.
+   * - Returnerar vinnaren ("X" eller "O") om tre i rad hittas, annars null.
+   */
   function checkWinner(board) {
     const lines = [
       [0, 1, 2],
@@ -57,6 +78,7 @@ export default function ThreeInARow() {
     return null;
   }
 
+  // Beräknar vinnaren vid varje render
   const winner = checkWinner(cells);
 
   return (
@@ -65,6 +87,7 @@ export default function ThreeInARow() {
         {winner ? `${winner} vann!` : "Din tur!"}
       </h1>
 
+      {/* Renderar 3x3-brädet */}
       <div className="grid grid-cols-3 gap-1">
         {cells.map((val, index) => (
           <div

@@ -2,22 +2,36 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { onEvent } from "@/app/utils/eventbus";
 
+/**
+ * ChangeSide – hanterar en "blad/övergång"-animation med två paneler.
+ *
+ * Funktioner:
+ * - Två svarta divs som glider åt vänster och höger för att skapa övergångseffekt.
+ * - Lyssnar på globala events via eventbus: "OpenAnimation" och "CloseAnimation".
+ * - GSAP används för smidig animation.
+ *
+ * Användning:
+ * - Skickar du "OpenAnimation" event så glider panelerna utåt.
+ * - Skickar du "CloseAnimation" event så glider panelerna tillbaka.
+ */
 export default function ChangeSide() {
-  const rightRef = useRef(null);
-  const leftRef = useRef(null);
-  const containerRef = useRef(null);
-  const isAnimating = useRef(false);
+  const rightRef = useRef(null); // Höger panel
+  const leftRef = useRef(null); // Vänster panel
+  const containerRef = useRef(null); // Behållare för paneler
+  const isAnimating = useRef(false); // Förhindrar att animation startar igen innan nuvarande är klar
 
   useEffect(() => {
+    // Öppna-animation
     const Open = () => {
-      if (isAnimating.current) return; // kör inte igen om pågår
+      if (isAnimating.current) return;
       isAnimating.current = true;
 
       containerRef.current.style.display = "block";
 
       const tl = gsap.timeline({
         onComplete: () => {
-          isAnimating.current = false; // redo för nästa gång
+          isAnimating.current = false;
+          // reset dimensioner
           containerRef.current.style.height = 0;
           containerRef.current.style.width = 0;
         }
@@ -26,15 +40,16 @@ export default function ChangeSide() {
       tl.fromTo(
         leftRef.current,
         { x: 0 },
-        { x: -leftRef.current.offsetWidth, duration: 1, delay:0.5, ease: "power2.out" }
+        { x: -leftRef.current.offsetWidth, duration: 1, delay: 0.5, ease: "power2.out" }
       ).fromTo(
         rightRef.current,
         { x: 0 },
         { x: rightRef.current.offsetWidth, duration: 1, ease: "power2.out" },
-        "<"
+        "<" // startar samtidigt som vänster panel
       );
     };
 
+    // Stäng-animation
     const Close = () => {
       if (isAnimating.current) return;
       isAnimating.current = true;
@@ -59,9 +74,11 @@ export default function ChangeSide() {
       );
     };
 
+    // Prenumerera på events
     const unsubscribeOpen = onEvent("OpenAnimation", Open);
     const unsubscribeClose = onEvent("CloseAnimation", Close);
 
+    // Rensa eventlisteners vid unmount
     return () => {
       unsubscribeOpen();
       unsubscribeClose();

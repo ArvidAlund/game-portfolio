@@ -1,16 +1,27 @@
+/**
+ * BookImages-komponenten visar en lista av bilder i ett grid-format.
+ * Antalet rader i griden anpassas automatiskt efter hur många bilder som skickas in via props.
+ * Varje bild får en lätt "hover"-animation som förstorar den något för visuell feedback.
+ */
+
 export default function BookImages({ images }) {
+  // Räknar hur många bilder som skickats in som props
   const imageCount = images.length;
 
   return (
     <div
       className="grid gap-2 w-full h-full"
       style={{
-        gridTemplateRows: `repeat(${imageCount}, 1fr)`, // En rad per bild
-        gridAutoColumns: `1fr`, // Varje rad fyller bredden
+        gridTemplateRows: `repeat(${imageCount}, 1fr)`,
+        gridAutoColumns: `1fr`,
       }}
     >
+      {/* Mappar igenom alla bilder och skapar en bild-container för varje */}
       {images.map((image, index) => (
-        <div key={index} className="w-full h-full transition-all duration-200 hover:scale-110">
+        <div
+          key={index}
+          className="w-full h-full transition-all duration-200 hover:scale-110"
+        >
           <img
             src={image}
             alt="Bild på project"

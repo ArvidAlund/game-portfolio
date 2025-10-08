@@ -8,6 +8,13 @@ import BookImages from "./bookimages";
 import TechStack from "../techStack";
 import ThreeInARow from "../games/threeInARow";
 
+/* 
+--------------------------------------------------
+Page – En enskild boksida
+Visar innehåll (children) och sidnummer i hörnet.
+Stylingen styr bakgrund, ram, typsnitt och layout.
+--------------------------------------------------
+*/
 function Page({ children, index }) {
   return (
     <div className="absolute inset-0 bg-[#d8c59a] text-[#2b1b0d] p-4 font-[VT323] text-xl border-4 border-[#9b8657] pixel-border box-border overflow-hidden [&>h1]:text-base [&>h1]:uppercase [&>h1]:mb-3 [&>h1]:border-b-2">
@@ -17,16 +24,40 @@ function Page({ children, index }) {
   );
 }
 
+/* 
+--------------------------------------------------
+Book – Huvudkomponenten
+Visar en "bläddringsbar bok" med olika sidor som 
+presenterar portfolioinnehåll. Animationer görs i 3D
+med hjälp av GSAP.
+--------------------------------------------------
+*/
 export default function Book() {
+  // Aktuell sida (vänstersida = page, högersida = page + 1)
   const [page, setPage] = useState(0);
+  // Hindrar flera bläddringar samtidigt
   const [isFlipping, setIsFlipping] = useState(false);
+
+  // Refs för DOM-element (används av GSAP)
   const leftPageRef = useRef(null);
   const rightPageRef = useRef(null);
   const flipContainerRef = useRef(null);
+
+  // Styr om projektsidan visar sammanfattning eller heltext
   const [summarizeFirst, setSummarizeFirst] = useState(true);
+
+  // För enkel sprite-animation (växlar mellan två frames)
   const [waveFrame, setWaveFrame] = useState(0);
+
+   // Bilder till första projektet (används av BookImages-komponenten)
   const firstProjImg = ["/kod-bilder/vkbilen/1.png", "/kod-bilder/vkbilen/3.png"]
 
+  /* 
+  --------------------------------------------------
+  useEffect – Hanterar sprite-animation
+  Växlar bildruta var 200ms för att simulera rörelse.
+  --------------------------------------------------
+  */
   useEffect(() => {
     const interval = setInterval(() => {
       setWaveFrame(prev => (prev === 1 ? 0 : 1));
@@ -35,6 +66,12 @@ export default function Book() {
     return () => clearInterval(interval); // Clean up when component unmounts
   }, []);
 
+  /* 
+  --------------------------------------------------
+  pages – Innehållet i boken
+  Varje sida är en <Page> med eget innehåll och index.
+  --------------------------------------------------
+  */
   const pages = [
     <Page key={0} index={1}><h1>Arvid Ålunds utvecklarresa</h1>
     <ul className="[&>li>h4]:text-[0.6rem] [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2">
@@ -71,6 +108,7 @@ export default function Book() {
       </div>
     </Page>,
 
+    /* Kapitel 1 */
     <Page key={2} index={3}>
         <h1>Kapitel 1 – Starten</h1>
         <p>Jag har alltid fascinerats av programmering, men det var på gymnasiet jag tog det på riktigt. <br /><br /> Min första kod skrev jag i HTML, var väldigt simpel och på andra sidan kan du se på mitt allra första kod.</p>
@@ -90,6 +128,8 @@ export default function Book() {
         {"<h6>Underrubrik nivå 6</h6>"}
         </div>
     </Page>,
+
+    /* Kapitel 2 – Studier */
     <Page key={4} index={5}>
         <h1>Kapitel 2 – Studier / Utbildning</h1>
         <ul className="[&>li>div>h4]:text-[0.6rem] [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:w-full [&>li>div]:flex [&>li>div]:justify-between [&>li>div]:items-center [&>li>p]:text-[0.8rem]">
@@ -112,6 +152,8 @@ export default function Book() {
     <Page key={5} index={6}>
       <p>Jag har insett att en väl fungerande webbplats uppnås genom användarcentrerad design, där användarens behov och en sömlös UX står i fokus.</p>
     </Page>,
+
+    /* Kapitel 3 – Första projektet */
     <Page key={6} index={7}>
         <h1>Kapitel 3 – Första riktiga projekt</h1>
         {summarizeFirst ? (
@@ -151,6 +193,7 @@ export default function Book() {
           <BookImages images={firstProjImg}/>
         </Page>,
 
+        /* Kapitel 4 */
     <Page key={8} index={9}>
         <h1>Kapitel 4 – Från junior till fullstack</h1>
         <p>En ny sida i boken öppnas…</p>
@@ -159,6 +202,7 @@ export default function Book() {
         <TechStack/>
         </Page>,
 
+        /* Kapitel 5 och avslut */
     <Page key={10} index={11}>
         <h1>Kapitel 5 – Vision / Framtid</h1>
         <p>En ny sida i boken öppnas…</p>
@@ -178,6 +222,13 @@ export default function Book() {
         </Page>,
   ];
 
+
+    /* 
+  --------------------------------------------------
+  flipPage() – Hanterar sidvändning
+  Animerar bläddring åt höger eller vänster med GSAP.
+  --------------------------------------------------
+  */
   const flipPage = (direction) => {
     if (isFlipping) return;
     if (page === 0 && direction != "next") return;
@@ -189,10 +240,11 @@ export default function Book() {
 
     const flippingRef = direction === "next" ? rightPageRef : leftPageRef;
 
+    // GSAP-timeline för bläddringsanimation
     const tl = gsap.timeline({
       onComplete: () => {
-        setPage(validPage);
-        gsap.set(flippingRef.current, { rotateY: 0 });
+        setPage(validPage); // uppdaterar aktuell sida
+        gsap.set(flippingRef.current, { rotateY: 0 }); // nollställer rotering
         setIsFlipping(false);
       },
     });
@@ -205,6 +257,12 @@ export default function Book() {
     });
   };
 
+  /* 
+  --------------------------------------------------
+  useEffect – Ställer in 3D-perspektiv på boken
+  Krävs för att sidvändningen ska se realistisk ut.
+  --------------------------------------------------
+  */
   useEffect(() => {
     gsap.set(flipContainerRef.current, {
       transformStyle: "preserve-3d",
@@ -212,6 +270,11 @@ export default function Book() {
     });
   }, []);
 
+  /* 
+  --------------------------------------------------
+  Render – Boklayout och knappar
+  --------------------------------------------------
+  */
   return (
     <main className="absolute w-2/3 max-w-[1000px] aspect-[3/2] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#bca878] border-8 border-[#7e6841] shadow-[4px_4px_0_#2a1c10] pixel-border overflow-hidden z-50">
       <div ref={flipContainerRef} className="relative w-full h-full flex">
