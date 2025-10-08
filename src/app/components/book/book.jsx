@@ -21,14 +21,6 @@ export default function Book() {
   const [xpTakenList, setXpTakenList] = useState([0]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setWaveFrame(prev => (prev === 1 ? 0 : 1));
-    }, 200);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
         onEvent("inventory", (detail) =>{
           if (detail === null){
             setIsVisible(false);

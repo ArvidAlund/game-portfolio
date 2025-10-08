@@ -19,19 +19,13 @@ export default function BookPages() {
 
   const firstProjImg = ["/kod-bilder/vkbilen/1.png", "/kod-bilder/vkbilen/3.png"]
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWaveFrame((prev) => (prev === 1 ? 0 : 1));
-    }, 200);
-    return () => clearInterval(interval);
-  }, []);
 
 useEffect(() => {
     const interval = setInterval(() => {
       setWaveFrame(prev => (prev === 1 ? 0 : 1));
     }, 200);
 
-    return () => clearInterval(interval); // Clean up when component unmounts
+    return () => clearInterval(interval);
   }, []);
 
 const bookPages = [
@@ -66,7 +60,7 @@ const bookPages = [
     <Page key={1} index={2}>
       <p>Hej! Jag heter Arvid och jag bygger digitala världar med kod.</p>
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-1/2 items-center"><img src={AllFrames["waveFrames"][waveFrame]} alt="" className="pixelated w-full"/></div>
+        <div className="w-1/2 items-center"><img src={AllFrames["waveFrames"][waveFrame]} alt="Player wave" className="pixelated w-full"/></div>
       </div>
     </Page>,
 

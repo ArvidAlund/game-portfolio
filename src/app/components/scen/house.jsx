@@ -44,7 +44,6 @@ export default function House() {
 
     const handleKey = (e) => {
       if (e.key === "Enter" && nearPlayer) {
-        console.log("Går in i huset!");
         emitEvent("EnterHouse");
       }
     };
