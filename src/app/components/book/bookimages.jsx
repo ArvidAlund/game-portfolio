@@ -5,14 +5,12 @@
  */
 
 export default function BookImages({ images }) {
-  // Räknar hur många bilder som skickats in som props
-  const imageCount = images.length;
 
   return (
     <div
       className="grid gap-2 w-full h-full"
       style={{
-        gridTemplateRows: `repeat(${imageCount}, 1fr)`,
+        gridTemplateRows: `repeat(${images.length}, 1fr)`,
         gridAutoColumns: `1fr`,
       }}
     >

@@ -8,19 +8,9 @@ export default function PickupBook(){
     const [nearPlayer, setNearPlayer] = useState(false);
 
     useEffect(()=>{
-        gsap.to(BookRef.current, {
-        y: 20,               // flytta 20px ner
-        duration: 0.5,       // 0.5 sekunder
-        ease: "power1.in",      // bounce-effekt
-        repeat: -1,          // -1 = infinite
-        yoyo: true           // går tillbaka och upprepar
-        });
+        gsap.to(BookRef.current, {y: 20, duration: 0.5, ease: "power1.in", repeat: -1, yoyo: true});
     },[])
 
-    /**
-       * Effekt för kontinuerlig koll av närhet mellan spelare och hus
-       * Körs varje 50ms (20 fps) för att uppdatera nearPlayer state
-       */
       useEffect(() => {
         const checkOverlap = () => {
           const player = document.querySelector(".Player");
