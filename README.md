@@ -1,141 +1,138 @@
-# Portfolio | Game time
+<!-- Improved compatibility of back to top link -->
 
-## Länk
+<a id="readme-top"></a>
 
-https://game-portfolio-six.vercel.app/
+<!-- PROJECT SHIELDS -->
 
-## Getting Started
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![project_license][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-First, run the development server:
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/ArvidAlund/game-portfolio">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  <h3 align="center">Game Portfolio</h3>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  <p align="center">
+    En interaktiv portfolio byggd med en spelinspirerad design där användaren kan utforska dina projekt, färdigheter och kontaktuppgifter som om det vore en spelvärld.
+    <br />
+    <a href="https://game-portfolio-six.vercel.app/"><strong>Besök portfolion »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/ArvidAlund/game-portfolio">Visa demo</a>
+    &middot;
+    <a href="https://github.com/ArvidAlund/game-portfolio/issues/new?labels=bug&template=bug-report---.md">Rapportera bugg</a>
+    &middot;
+    <a href="https://github.com/ArvidAlund/game-portfolio/issues/new?labels=enhancement&template=feature-request---.md">Föreslå funktion</a>
+  </p>
+</div>
 
-# Wireframe för spel-vibe portfolio
+---
 
-## Start (Hub / Main Menu)
+## 🎮 Portfolio | Game Time
 
-Visuellt: En central plats, typ som en liten stad/by eller “hub world”.
+### 🌐 Länk
 
-Innehåll:
+🔗 [https://game-portfolio-six.vercel.app/](https://game-portfolio-six.vercel.app/)
 
-Avatar av dig själv (kan vara pixel/ikon eller stiliserad figur).
+---
 
-En enkel meny/HUD:
+## 📖 About The Project
 
-Stats: Frontend: ⭐⭐⭐⭐, Backend: ⭐⭐⭐, Databases: ⭐⭐
+Denna portfolio är designad som ett **spel** där användaren navigerar mellan olika zoner som representerar delar av din utvecklarresa — som "About Me", "Projects", "Skills" och "Contact".  
+Syftet är att skapa en upplevelse som känns levande, personlig och lekfull — samtidigt som den visar upp din kompetens som webbutvecklare.
 
-Knappar: [Enter World] eller piltangenter för att börja utforska.
+[![Product Screenshot][product-screenshot]](https://game-portfolio-six.vercel.app/)
 
-Interaktivitet:
+### Wireframe / Koncept
 
-Klicka på skyltar eller dörrar för att gå till andra zoner.
+#### 🏠 Zone 0 – Start (Hub / Main Menu)
 
-## Zone 1 – About Me (Profilområdet)
+- En central plats – t.ex. en liten stad/by eller hub world.
+- Avatar av dig själv (pixel/ikon).
+- HUD visar stats:  
+  **Frontend:** ⭐⭐⭐⭐ **Backend:** ⭐⭐⭐ **Databases:** ⭐⭐
+- Knappar: `Enter World` / piltangenter för att utforska.
+- Interaktivitet: klicka på skyltar/dörrar för att gå till andra zoner.
 
-Visuellt: Ett litet “hus” eller bibliotek där spelaren kan läsa din story.
+#### 📜 Zone 1 – About Me
 
-Innehåll:
+- Visuellt: bibliotek eller hus med din personliga story.
+- Presentation + tidslinje med din utvecklarresa.
+- Avatar levlar upp (student → junior → fullstack).
+- “Bläddra i bok” = CV-modal.
+- Easter egg: Tryck på avataren → `"Coffee-driven developer ☕"`.
 
-Kort presentation av dig.
+#### 🧰 Zone 2 – Projects
 
-Liten timeline med din utvecklarresa.
+- Visuellt: marknad/dungeon med kistor/portaler.
+- Varje projekt = kista som öppnar modal med:
+  - Namn
+  - Tech stack (ikoner)
+  - Repo-länk + live demo
+- Kategorier:  
+  🟦 Frontend 🟩 Backend 🟪 Fullstack
+- Interaktivitet: “Loot chest”-animation, filter i HUD.
 
-Avatar som levlar upp med tiden (t.ex. student → junior → fullstack).
+#### ⚔️ Zone 3 – Skills
 
-Interaktivitet:
+- Visuellt: dojo eller futuristiskt “skill tree”.
+- Skills representerade som items (svärd = React, sköld = Node).
+- Hover → erfarenhetsnivå (basic/intermediate/advanced).
+- Klick → exempel på användning i kod/projekt.
 
-“Bläddra i en bok” = en modal med ditt CV.
+#### 🔮 Zone 4 – Contact
 
-Easter egg: Tryck på din avatar för ett hemligt meddelande (“Coffee-driven developer ☕”).
+- Visuellt: “Boss gate” eller stor portal.
+- Kontaktformulär (namn, mejl, meddelande).
+- Länkar till LinkedIn, GitHub.
+- Easter egg: “hire me” → special animation.
 
-## Zone 2 – Projects (Quest Area)
+#### 🧩 HUD / Meny (alltid synlig)
 
-Visuellt: En marknad eller dungeon med olika kistor/portaler.
+- Avatar + namn
+- XP-bar som fylls när man utforskar
+- Snabbnavigation: Home | Projects | Skills | Contact
 
-Innehåll:
+#### 🏆 Gamification
 
-Varje projekt = en kista/portal.
+- Achievements:
+  - “Explorer” (besökt alla zoner)
+  - “Quest Master” (kollat alla projekt)
+- Mini-game gömt (Snake/Pong)
+- Retro cheat code: ↑ ↑ ↓ ↓ ← → ← → B A → hemlig sektion
 
-När användaren klickar på en kista:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Modal öppnas med projektets namn, tech stack (ikoner), repo-länk och live demo.
+---
 
-Projekten kategoriserade i färger:
+## 🧱 Built With
 
-🟦 Frontend
+- [![Next][Next.js]][Next-url]
+- [![React][React.js]][React-url]
+- [![Supabase][Supabase-shield]](https://supabase.com/)
+- [![Vercel][Vercel-shield]](https://vercel.com/)
+- [![GSAP][GSAP-shield]](https://greensock.com/gsap/)
+- [![Framer Motion][FramerMotion-shield]](https://www.framer.com/motion/)
 
-🟩 Backend
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-🟪 Fullstack
+---
 
-Interaktivitet:
+## 🚀 Getting Started
 
-“Loot chest”-animation när ett projekt öppnas.
+För att köra projektet lokalt:
 
-Filter-knappar i HUD (t.ex. show frontend only).
+### Installation
 
-## Zone 3 – Skills (Training Grounds)
-
-Visuellt: En dojo, träningsplats eller futuristiskt “skill tree”.
-
-Innehåll:
-
-Skills som ikoner (React, Next.js, Node.js, SQL, Supabase, etc).
-
-Power-up känsla: varje skill representeras som en “item” (ex: svärd = React, sköld = Node).
-
-Interaktivitet:
-
-Hover på en skill → visar din erfarenhetsnivå (basic/intermediate/advanced).
-
-Klick → liten pop-up med exempel på kod/projekt där du använt den.
-
-## Zone 4 – Contact (Boss Room / Portal)
-
-Visuellt: En stor port eller “boss gate”.
-
-Innehåll:
-
-Kontaktformulär (namn, mejl, meddelande).
-
-Länkar till LinkedIn, GitHub.
-
-Interaktivitet:
-
-När formuläret skickas: liten animation (“du besegrade bossen → meddelande skickat!”).
-
-Easter egg: Om man skriver “hire me” i meddelandet → extra animation.
-
-## HUD / Meny (alltid synlig)
-
-Visuellt: Retro statusrad, likt i spel.
-
-Innehåll:
-
-Avatar + namn.
-
-XP-bar (fylls ju mer man utforskar).
-
-Knappar för snabb navigation: Home, Projects, Skills, Contact.
-
-Extra Easter Eggs / Gamification
-
-XP-system → Lås upp achievements:
-
-"Explorer" (navigerat till alla zoner).
-
-"Quest Master" (kollat på alla projekt).
-
-Liten mini-game (t.ex. Snake eller Pong) gömt någonstans.
-
-Retro cheat code: ↑ ↑ ↓ ↓ ← → ← → B A → öppnar en hemlig sektion.
+1. Klona repot
+   ```bash
+   git clone https://github.com/ArvidAlund/game-portfolio.git
+   ```
