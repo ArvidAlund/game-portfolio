@@ -116,10 +116,9 @@ Syftet är att skapa en upplevelse som känns levande, personlig och lekfull —
 
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
-- [![Supabase][Supabase-shield]](https://supabase.com/)
-- [![Vercel][Vercel-shield]](https://vercel.com/)
 - [![GSAP][GSAP-shield]](https://greensock.com/gsap/)
-- [![Framer Motion][FramerMotion-shield]](https://www.framer.com/motion/)
+- [![Vercel][Vercel-shield]](https://vercel.com/)
+- [![TailwindCSS][Tailwind-shield]](https://tailwindcss.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -179,3 +178,10 @@ Distributed under the MIT License. See LICENSE.txt for more information.
 [license-url]: https://github.com/ArvidAlund/game-portfolio/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/arvid-%C3%A5lund-6037342a3/
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[GSAP-shield]: https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white
+[Vercel-shield]: https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white
+[Tailwind-shield]: https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white
