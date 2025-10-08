@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ArvidAlund/game-portfolio">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/favicon/android-chrome-192x192.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Game Portfolio</h3>
@@ -46,8 +46,8 @@
 
 ## 📖 About The Project
 
-Denna portfolio är designad som ett **spel** där användaren navigerar mellan olika zoner som representerar delar av din utvecklarresa — som "About Me", "Projects", "Skills" och "Contact".  
-Syftet är att skapa en upplevelse som känns levande, personlig och lekfull — samtidigt som den visar upp din kompetens som webbutvecklare.
+Denna portfolio är designad som ett **spel** där användaren navigerar mellan olika zoner som representerar delar av min utvecklarresa — som "About Me", "Projects", "Skills" och "Contact".  
+Syftet är att skapa en upplevelse som känns levande, personlig och lekfull — samtidigt som den visar upp min kompetens som webbutvecklare.
 
 [![Product Screenshot][product-screenshot]](https://game-portfolio-six.vercel.app/)
 
@@ -55,12 +55,11 @@ Syftet är att skapa en upplevelse som känns levande, personlig och lekfull —
 
 #### 🏠 Zone 0 – Start (Hub / Main Menu)
 
-- En central plats – t.ex. en liten stad/by eller hub world.
-- Avatar av dig själv (pixel/ikon).
-- HUD visar stats:  
-  **Frontend:** ⭐⭐⭐⭐ **Backend:** ⭐⭐⭐ **Databases:** ⭐⭐
-- Knappar: `Enter World` / piltangenter för att utforska.
-- Interaktivitet: klicka på skyltar/dörrar för att gå till andra zoner.
+- En central plats – hub world.
+- Avatar av dig själv.
+- HUD visar stats:
+- Knappar: `Starta äventyret` / piltangenter för att utforska.
+- Interaktivitet: klicka vid hus för att gå vidare till andra delar.
 
 #### 📜 Zone 1 – About Me
 
@@ -133,6 +132,37 @@ För att köra projektet lokalt:
 ### Installation
 
 1. Klona repot
+
    ```bash
    git clone https://github.com/ArvidAlund/game-portfolio.git
    ```
+
+2. Installera beroenden
+
+   ```bash
+   npm install
+   ```
+
+3. Starta utvecklingsservern
+
+   ```bash
+   npm run dev
+   ```
+
+4. Öppna http://localhost:3000 i webbläsaren.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📫 Contact
+
+Arvid Ålund
+LinkedIn
+• GitHub
+
+Projektlänk: https://github.com/ArvidAlund/game-portfolio
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🧾 License
+
+Distributed under the MIT License. See LICENSE.txt for more information.
