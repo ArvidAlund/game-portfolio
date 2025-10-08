@@ -3,6 +3,7 @@ import { AllFrames } from "../character/animation/allFrames";
 import { useState, useEffect } from "react";
 import BookImages from "@/app/components/book/bookimages";
 import TechStack from "@/app/components/techStack";
+import Chapter from "./chapter";
 
 
 function Page({ children, index }) {
@@ -31,31 +32,31 @@ useEffect(() => {
 const bookPages = [
     <Page key={0} index={1}>
     <h1>Arvid Ålunds utvecklarresa</h1>
-    <ul className="[&>li>h4]:text-lg! [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2">
-        <li>
+    <ul className="[&>li>h4]:text-lg! [&>li]:flex [&>li]:items-center [&>li]:justify-between [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:cursor-pointer">
+        <Chapter index={0}>
             <h4>Kapitel 1 – Starten</h4>
             <p>3</p>
-        </li>
-        <li>
+        </Chapter>
+        <Chapter index={1}>
             <h4>Kapitel 2 – Studier / Utbildning</h4>
             <p>5</p>
-        </li>
-        <li>
+        </Chapter>
+        <Chapter index={2}>
             <h4>Kapitel 3 – Första riktiga projekt</h4>
             <p>7</p>
-        </li>
-        <li>
+        </Chapter>
+        <Chapter index={3}>
             <h4>Kapitel 4 – Från junior till fullstack</h4>
             <p>9</p>
-        </li>
-        <li>
+        </Chapter>
+        <Chapter index={4}>
             <h4>Kapitel 5 – Vision / Framtid</h4>
             <p>11</p>
-        </li>
-        <li>
+        </Chapter>
+        <Chapter index={5}>
             <h4>Sista sida / avslut</h4>
             <p>13</p>
-        </li>
+        </Chapter>
     </ul>
     </Page>,
     <Page key={1} index={2}>
@@ -89,7 +90,7 @@ const bookPages = [
     /* Kapitel 2 – Studier */
     <Page key={4} index={5}>
         <h1>Kapitel 2 – Studier / Utbildning</h1>
-        <ul className="[&>li>div>h4]:text-[0.6rem] [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:w-full [&>li>div]:flex [&>li>div]:justify-between [&>li>div]:items-center [&>li>p]:text-[0.8rem]">
+        <ul className="[&>li>div>h4]:text-lg [&>li]:border-b-2 [&>li]:mt-2 [&>li]:pb-2 [&>li]:w-full [&>li>div]:flex [&>li>div]:justify-between [&>li>div]:items-center [&>li>p]:text-sm [&>li>div>p]:text-sm [&>li>div>p]:w-30 [&>li>div>p]:text-end">
             <li>
                 <div>
                     <h4>Nackademin</h4>
