@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation";
  * const { currentFrame, showTransition } = useEnterHouse(AllFrames["houseFrames"]);
  * <img src={AllFrames["houseFrames"][currentFrame]} />
  */
-export default function useEnterHouse(frames, frameDuration = 500, targetUrl = "/aboutme") {
+export default function useEnterHouse(frames, frameDuration = 250, targetUrl = "/aboutme") {
   const [currentFrame, setCurrentFrame] = useState(null);
   const intervalRef = useRef(null);
   const [showTransition, setShowTransition] = useState(false);

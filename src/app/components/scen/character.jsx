@@ -2,7 +2,7 @@ import useCharacterMovement from "@/app/hooks/character/movement/useCharacterMov
 import useBlinkAnimation from "@/app/hooks/character/animation/useBlinkAnimation";
 import useWalkAnimation from "@/app/hooks/character/animation/useWalkAnimation";
 import useJumpAnimation from "@/app/hooks/character/animation/useJumpAnimation";
-import Message from "./characterMessages";
+import usePlayerMessage from "@/app/hooks/character/usePlayerMessages";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap/gsap-core";
 import { AllFrames } from "@/app/hooks/character/animation/allFrames";
@@ -73,7 +73,7 @@ export default function Character() {
       setTalking(true);
 
       // Sätt text och visa pratbubblan
-      messageRef.current.textContent = Message();
+      messageRef.current.textContent = usePlayerMessage();
       messageRef.current.style.display = "block";
 
       // Fade + slide in

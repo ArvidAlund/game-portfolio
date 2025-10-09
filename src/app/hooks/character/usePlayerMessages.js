@@ -4,6 +4,6 @@ const messages = [
     "Varför kan inte skelett ljuga? — Man ser rakt igenom dem."
 ]
 
-export default function Message(){
+export default function usePlayerMessage(){
     return messages[Math.floor(Math.random()*messages.length)];
 }
