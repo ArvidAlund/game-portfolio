@@ -1,0 +1,1 @@
+export const chestFrames = ["pixelart/animate/openChest/1.png", "pixelart/animate/openChest/2.png", "pixelart/animate/openChest/3.png", "pixelart/animate/openChest/4.png"]
