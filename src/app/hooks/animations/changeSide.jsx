@@ -40,11 +40,11 @@ export default function ChangeSide() {
       tl.fromTo(
         leftRef.current,
         { x: 0 },
-        { x: -leftRef.current.offsetWidth, duration: 1, delay: 0.5, ease: "power2.out" }
+        { x: -leftRef.current.offsetWidth, duration: 0.5, delay: 0.2, ease: "power2.out" }
       ).fromTo(
         rightRef.current,
         { x: 0 },
-        { x: rightRef.current.offsetWidth, duration: 1, ease: "power2.out" },
+        { x: rightRef.current.offsetWidth, duration: 0.5, ease: "power2.out" },
         "<" // startar samtidigt som vänster panel
       );
     };
@@ -68,11 +68,11 @@ export default function ChangeSide() {
       tl.fromTo(
         leftRef.current,
         { x: -leftRef.current.offsetWidth },
-        { x: 0, duration: 1, ease: "power2.out" }
+        { x: 0, duration: 0.5, ease: "power2.out" }
       ).fromTo(
         rightRef.current,
         { x: rightRef.current.offsetWidth },
-        { x: 0, duration: 1, ease: "power2.out" },
+        { x: 0, duration: 0.5, ease: "power2.out" },
         "<"
       );
     };

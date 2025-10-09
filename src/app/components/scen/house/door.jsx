@@ -26,7 +26,7 @@ export default function Door({ img, exit = false, destination = "/" }) {
         emitEvent("CloseAnimation");
         setTimeout(()=>{
           window.location.href = destination
-        },1000)
+        },500)
       }
     };
 
