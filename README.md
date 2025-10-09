@@ -155,7 +155,7 @@ För att köra projektet lokalt:
 ## 📫 Contact
 
 Arvid Ålund
-[LinkedIn](https://www.linkedin.com/in/arvid-%C3%A5lund-6037342a3/)
+[LinkedIn][linkedin-url]
 • [GitHub](https://github.com/ArvidAlund)
 
 Projektlänk: https://github.com/ArvidAlund/game-portfolio
@@ -177,7 +177,7 @@ Distributed under the MIT License. See <a href="/LICENSE.txt">LICENSE.txt</a> fo
 [license-shield]: https://img.shields.io/github/license/ArvidAlund/game-portfolio.svg?style=for-the-badge
 [license-url]: https://github.com/ArvidAlund/game-portfolio/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/arvid-%C3%A5lund-6037342a3/
+[linkedin-url]: https://www.linkedin.com/in/ArvidAlund/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
