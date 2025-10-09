@@ -4,15 +4,16 @@ import { faRightLong, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { emitEvent, onEvent } from "@/app/utils/eventbus";
-import BookPages from "@/app/hooks/book/pages";
+import useBookPages from "@/app/hooks/book/pages";
 
 
 export default function Book() {
-  const pages = BookPages();
 
   const [page, setPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+
+  const {pages, closeBookButton} = useBookPages();
 
   const leftPageRef = useRef(null);
   const rightPageRef = useRef(null);
@@ -45,6 +46,12 @@ export default function Book() {
       emitEvent("CanMove", true);
     }
   },[isVisible])
+
+  useEffect(()=>{
+    if (closeBookButton){
+      setIsVisible(false);
+    }
+  },[closeBookButton])
 
   const flipPage = (direction) => {
     if (isFlipping) return;

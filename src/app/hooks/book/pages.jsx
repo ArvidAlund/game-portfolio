@@ -15,8 +15,9 @@ function Page({ children, index }) {
   );
 }
 
-export default function BookPages() {
+export default function useBookPages() {
   const [waveFrame, setWaveFrame] = useState(0);
+  const [closeBookButton, setCloseBookButton] = useState(false);
 
   const firstProjImg = ["/kod-bilder/vkbilen/1.png", "/kod-bilder/vkbilen/3.png"]
 
@@ -173,8 +174,8 @@ const bookPages = [
         </Page>,
 
       <Page key={13} index={14}>
-        <button onClick={()=>setIsVisible(false)}>Stäng boken</button>
+        <button className="border-2 p-2 rounded m-[0_auto]" onClick={()=>setCloseBookButton(true)}>Stäng boken</button>
         </Page>,
   ];
-  return bookPages
+  return {pages: bookPages, closeBookButton}
 }
