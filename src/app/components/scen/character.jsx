@@ -25,7 +25,6 @@ export default function Character() {
   // Hämtar aktuell fönsterstorlek från global context (för korrekt positionering)
   const { windowWidth, windowHeight } = useWindow();
 
-  // Returnerar spelarens position (vänster/botten) baserat på användarinmatning
   const { left, bottom } = useCharacterMovement(windowWidth / 2, (1 / 6) * windowHeight);
 
   // Hämtar rätt sprite-frame från respektive animationshook
@@ -107,7 +106,7 @@ export default function Character() {
 
   return (
     <div
-      className="absolute mb-[-8px] scale-400 select-none z-50 Player"
+      className="absolute mb-[-8px] scale-400 select-none z-50 Player bottom-1/6 left-1/2"
       style={{ left: `${left}px`, bottom: `${bottom}px` }}
       onClick={handlePlayerClick}
     >
