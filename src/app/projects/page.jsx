@@ -3,8 +3,8 @@
 import { useEffect } from "react"
 import { emitEvent } from "../utils/eventbus"
 import ChangeSide from "../hooks/animations/changeSide"
-import Character from "../components/scen/character"
 import ProjectChests from "../components/scen/projectChests/projectChests"
+import Character from "../components/scen/character"
 import Floor from "../components/scen/house/floor"
 
 export default function Projekt(){
@@ -12,9 +12,9 @@ export default function Projekt(){
         emitEvent("OpenAnimation");
     }, [])
     return <main className="relative overflow-hidden w-full h-screen">
-    <ChangeSide/>
-    <Character/>
-    <ProjectChests/>
-    <Floor img="/pixelart/assets/ground/dirt.png" tileWidth={16}/>
+        <Floor img="/pixelart/assets/ground/dirt.png" tileWidth={16}/>
+        <ChangeSide/>
+        <ProjectChests/>
+        <Character/>
     </main>
 }
