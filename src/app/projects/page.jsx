@@ -15,6 +15,6 @@ export default function Projekt(){
     <ChangeSide/>
     <Character/>
     <ProjectChests/>
-    <Floor img="/pixelart/assets/ground/dirt.png"/>
+    <Floor img="/pixelart/assets/ground/dirt.png" tileWidth={16}/>
     </main>
 }

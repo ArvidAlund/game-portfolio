@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useWindow } from "@/global/WindowContext";
 
-export default function Floor({ img, rotate=false }) {
+export default function Floor({ img, rotate=false, tileWidth=64 }) {
   const [tiles, setTiles] = useState(0);
   const {windowWidth, windowHeight} = useWindow();
 
@@ -10,7 +10,6 @@ export default function Floor({ img, rotate=false }) {
 
     const updateTiles = () => {
       const screenWidth = windowWidth;
-      const tileWidth = 64; // pixelbredd på din tile
       setTiles(Math.ceil(screenWidth / tileWidth));
     };
 
