@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useWindow } from "@/global/WindowContext";
 
-export default function Floor({ img }) {
+export default function Floor({ img, rotate=false }) {
   const [tiles, setTiles] = useState(0);
   const {windowWidth, windowHeight} = useWindow();
 
@@ -25,7 +25,7 @@ export default function Floor({ img }) {
         <img
           key={i}
           src={img}
-          className="h-full w-auto pixelated rotate-90"
+          className={`h-full w-auto pixelated ${rotate ? "rotate-90": null}`}
           draggable="false"
         />
       ))}

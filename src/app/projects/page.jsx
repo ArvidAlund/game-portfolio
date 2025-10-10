@@ -5,6 +5,7 @@ import { emitEvent } from "../utils/eventbus"
 import ChangeSide from "../hooks/animations/changeSide"
 import Character from "../components/scen/character"
 import ProjectChests from "../components/scen/projectChests/projectChests"
+import Floor from "../components/scen/house/floor"
 
 export default function Projekt(){
     useEffect(()=>{
@@ -14,5 +15,6 @@ export default function Projekt(){
     <ChangeSide/>
     <Character/>
     <ProjectChests/>
+    <Floor img="/pixelart/assets/ground/dirt.png"/>
     </main>
 }

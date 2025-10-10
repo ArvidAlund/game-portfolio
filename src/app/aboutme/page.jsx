@@ -15,7 +15,7 @@ export default function Aboutme(){
     return <section className="relative overflow-hidden w-full h-screen">
     <ChangeSide/>
     <Character/>
-    <Floor img="/pixelart/assets/house/floors/wood.jpg"/>
+    <Floor img="/pixelart/assets/house/floors/wood.jpg" rotate={true}/>
     <Door img="/pixelart/assets/house/doors/wood.png" destination="/projects"/>
     <Door img="/pixelart/assets/house/doors/wood.png" exit={true} destination="/"/>
     <PickupBook/>
