@@ -10,7 +10,6 @@ export default function RenderChestProject({index = 0}){
             try{
                 const res = await fetch("/projects.json");
                 const jsonData = await res.json();
-                console.log(jsonData.Projects)
                 setProjects(jsonData.Projects || []);
             } catch (error){
                 console.error("Fel vid hämtning av project: ", error);
@@ -21,14 +20,14 @@ export default function RenderChestProject({index = 0}){
     },[])
 
     useEffect(()=>{
-        const showProject = onEvent(`showProject-${index}`, ()=>{
+        const removeListener = onEvent(`showProject-${index}`, ()=>{
             setShow(true);
         })
 
         return () => {
-            showProject?.();
+            removeListener();
         }
-    },[])
+    },[index])
 
     const project = projects[index];
 
@@ -37,8 +36,8 @@ export default function RenderChestProject({index = 0}){
                 <h2>{project.name}</h2>
                 <p>{project.description}</p>
                 <div className="flex justify-between underline">
-                    <a href={project.github} target="_blank">GitHub</a>
-                    <a href={project.url} target="_blank">Demo</a>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href={project.url} target="_blank" rel="noopener noreferrer">Demo</a>
                 </div>
             </section>
         ):null)
