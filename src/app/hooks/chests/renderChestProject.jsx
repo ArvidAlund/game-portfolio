@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { onEvent } from "@/app/utils/eventbus";
 
 export default function RenderChestProject({index = 0}){
     const [projects, setProjects] = useState([]);
     const [show, setShow] = useState(false);
+    const projectRef = useRef(null);
 
     useEffect(()=>{
         const getProjects = async () => {
@@ -29,10 +30,25 @@ export default function RenderChestProject({index = 0}){
         }
     },[index])
 
+    useEffect(()=>{
+        if (!show) return
+        const element = projectRef.current;
+        if (!element) return;
+
+        const handleMouseOver = ()=>{
+            console.log("yes sir")
+        }
+
+        element.addEventListener("mouseover", handleMouseOver);
+        return () =>{
+            element.removeListener("mouseover", handleMouseOver);
+        }
+    }, [show])
+
     const project = projects[index];
 
     return (project && show ? (
-            <section className={`bg-[#f7efd8] text-black p-2 rounded w-fit`}>
+            <section className={`bg-[#f7efd8] text-black p-2 rounded w-fit`} ref={projectRef}>
                 <h2>{project.name}</h2>
                 <p>{project.description}</p>
                 <div className="flex justify-between underline">
