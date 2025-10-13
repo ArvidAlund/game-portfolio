@@ -2,7 +2,7 @@ import isOverlapping from "@/app/lib/isOverlapping";
 import { useRef, useEffect, useState } from "react";
 import useOpenChest from "./animation/useOpenChest";
 
-export default function RenderChest({ img = "pixelart/assets/misc/Chest.png" }) { 
+export default function RenderChest({ img = "pixelart/assets/misc/Chest.png", index}) { 
   const chestRef = useRef(null);
   const [openChest, setOpenChest] = useState(false);
   const [chestOpen, setChestOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function RenderChest({ img = "pixelart/assets/misc/Chest.png" }) 
 
 
   return (
-    <div className="w-25" ref={chestRef}>
+    <div className={`w-25`} ref={chestRef}>
       <img
         src={chestImage || img}
         alt="chest"
