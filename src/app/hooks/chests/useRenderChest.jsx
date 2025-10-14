@@ -9,7 +9,7 @@ export default function RenderChest({ img = "pixelart/assets/misc/Chest.png", in
   const [openChest, setOpenChest] = useState(false);
   const [chestImage, setChestImage] = useState(img);
   const [expandedBoolean, setExpandedBoolean] = useState(false);
-
+  
   // Hooken returnerar rätt frame baserat på openChest
   const {chestImageFrame, animationDone} = useOpenChest(openChest);
 
@@ -40,14 +40,8 @@ export default function RenderChest({ img = "pixelart/assets/misc/Chest.png", in
     emitEvent(`showProject-${index}`)
 
     const handleKeyPress = (event) =>{
-      console.log("test")
       if (event.key === "Enter"){
-        setExpandedBoolean((prev)=> {
-          const newValue = !prev;
-          console.log("Toggling Expanded: ", newValue);
-          emitEvent(`Expanded`, newValue);
-          return newValue
-        })
+        setExpandedBoolean(prev => !prev)
       }
     }
     const element = chestRef.current
@@ -59,6 +53,10 @@ export default function RenderChest({ img = "pixelart/assets/misc/Chest.png", in
       element.removeEventListener("keydown", handleKeyPress);
     }
   },[animationDone, index])
+
+  useEffect(()=>{
+    emitEvent("Expanded", expandedBoolean);
+  },[expandedBoolean])
 
   return (
     <div className={`w-25 outline-0`} ref={chestRef} tabIndex={0}>

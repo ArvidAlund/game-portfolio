@@ -22,7 +22,10 @@ export default function RenderChestProject({index = 0}){
             }
         }
         
-        const handler = (expand) => setExpanded(expand);
+        const handler = (expand) => {
+            projectRef.current.style = "";
+            setExpanded(expand);
+        }
 
         onEvent("Expanded", handler);
 
