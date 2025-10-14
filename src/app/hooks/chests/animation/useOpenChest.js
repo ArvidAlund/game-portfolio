@@ -5,10 +5,11 @@ import { chestFrames } from "@/app/assets/ChestFrames";
  * Hook som hanterar kistans öppningsanimation.
  * Returnerar aktuell bildruta baserat på openChest-state.
  */ 
-export default function useOpenChest(openChest, open) {
+export default function useOpenChest(openChest) {
   const [chestImageFrame, setChestImageFrame] = useState(null);
+  const [animationDone, setAnimationDone] = useState(false);
   useEffect(() => {
-    if (!openChest || !chestFrames?.length || open) return;
+    if (!openChest || !chestFrames?.length) return;
 
     let num = 0;
     const interval = setInterval(() => {
@@ -17,11 +18,12 @@ export default function useOpenChest(openChest, open) {
         num++;
       } else {
         clearInterval(interval);
+        setAnimationDone(true);
       }
     }, 50);
 
     return () => clearInterval(interval);
   }, [openChest]);
 
-  return {chestImageFrame, open};
+  return {chestImageFrame, animationDone};
 }

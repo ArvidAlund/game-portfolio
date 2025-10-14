@@ -1,0 +1,12 @@
+{
+  "Projects": [
+    {
+      "name": "NordicGear",
+      "description":"Onlineshop (fronted) med kassasystem",
+      "github": "https://github.com/ArvidAlund/ehandel-nordicgear-ab",
+      "techstack": ["Next.js", "Tailwind", "GSAP"],
+      "url": "https://ehandel-nordicgear-ab.vercel.app/",
+      "demo": ""
+    }
+  ]
+}
