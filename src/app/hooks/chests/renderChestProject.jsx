@@ -5,6 +5,15 @@ import { gsap } from "gsap/gsap-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Renders a project card for the project at the given index, with an entry animation and an expandable detail view.
+ *
+ * Subscribes to `showProject-{index}` to reveal the card, listens for `Expanded` events to toggle expansion state,
+ * and fetches project data from `/projects.json` on mount.
+ * @param {{index?: number}} props - Component props.
+ * @param {number} props.index - Zero-based index of the project to render. Defaults to 0.
+ * @returns {JSX.Element|null} A JSX element for the project when available and shown, or `null` otherwise.
+ */
 export default function RenderChestProject({index = 0}){
     const [projects, setProjects] = useState([]);
     const [show, setShow] = useState(false);

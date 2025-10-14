@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { chestFrames } from "@/app/assets/ChestFrames";
 
 /**
- * Hook som hanterar kistans öppningsanimation.
- * Returnerar aktuell bildruta baserat på openChest-state.
+ * Manage the chest-opening animation and expose the current frame and completion state.
+ * @param {boolean} openChest - When true, starts the frame-by-frame opening animation; when false no animation runs.
+ * @returns {{chestImageFrame: (string|null), animationDone: boolean}} An object with the current image frame to display (`null` if none) and `animationDone` which is `true` when the animation has finished, `false` otherwise.
  */ 
 export default function useOpenChest(openChest) {
   const [chestImageFrame, setChestImageFrame] = useState(null);
