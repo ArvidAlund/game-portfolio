@@ -4,6 +4,16 @@ import useOpenChest from "./animation/useOpenChest";
 import { emitEvent } from "@/app/utils/eventbus";
 
 
+/**
+ * Render a chest image that opens when the player overlaps it, emits events on animation completion, and toggles an expanded state via Enter.
+ *
+ * Renders a focusable container with the current chest frame image, monitors overlap with the player to trigger the opening animation, emits `showProject-{index}` when the opening animation completes, and emits `Expanded` whenever the expanded state changes. The container listens for the Enter key to toggle expansion.
+ *
+ * @param {Object} props
+ * @param {string} [props.img="pixelart/assets/misc/Chest.png"] - URL for the chest image to display; updated as the open-animation frame changes.
+ * @param {number|string} props.index - Identifier used to name the `showProject-{index}` event emitted when the opening animation finishes.
+ * @returns {JSX.Element} The focusable chest element containing the chest image.
+ */
 export default function RenderChest({ img = "pixelart/assets/misc/Chest.png", index}) { 
   const chestRef = useRef(null);
   const [openChest, setOpenChest] = useState(false);
