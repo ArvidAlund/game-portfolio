@@ -22,6 +22,10 @@ export default function RenderChestProject({index = 0}){
             }
         }
         
+        const handler = (expand) => setExpanded(expand);
+
+        onEvent("Expanded", handler);
+
         getProjects();
     },[])
 
