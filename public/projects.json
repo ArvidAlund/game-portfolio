@@ -7,6 +7,14 @@
       "techstack": ["Next.js", "Tailwind", "GSAP"],
       "url": "https://ehandel-nordicgear-ab.vercel.app/",
       "demo": ""
+    },
+    {
+      "name": "Budget app",
+      "description":"En budgetapplikation utvecklad i Next.js, med Supabase som backend för databas och autentisering.",
+      "github": "https://github.com/ArvidAlund/next-budget-app",
+      "techstack": ["Next.js", "Tailwind", "GSAP", "Supabase", "TypeScript"],
+      "url": "https://next-budget-app-theta.vercel.app/",
+      "demo": ""
     }
   ]
 }
