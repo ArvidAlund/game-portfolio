@@ -59,26 +59,23 @@ Syftet är att skapa en upplevelse som känns levande, personlig och lekfull —
 - Avatar av dig själv.
 - HUD visar stats:
 - Knappar: `Starta äventyret` / piltangenter för att utforska.
-- Interaktivitet: klicka vid hus för att gå vidare till andra delar.
+- Interaktivitet: klicka vid hus för att gå vidare till andra zon 2.
 
 #### 📜 Zone 1 – About Me
 
-- Visuellt: bibliotek eller hus med din personliga story.
+- Visuellt: hus med en bok för att visa min personliga story.
 - Presentation + tidslinje med din utvecklarresa.
-- Avatar levlar upp (student → junior → fullstack).
 - “Bläddra i bok” = CV-modal.
-- Easter egg: Tryck på avataren → `"Coffee-driven developer ☕"`.
 
 #### 🧰 Zone 2 – Projects
 
-- Visuellt: marknad/dungeon med kistor/portaler.
+- Visuellt: dungeon med kistor.
 - Varje projekt = kista som öppnar modal med:
   - Namn
   - Tech stack (ikoner)
   - Repo-länk + live demo
 - Kategorier:  
   🟦 Frontend 🟩 Backend 🟪 Fullstack
-- Interaktivitet: “Loot chest”-animation, filter i HUD.
 
 #### ⚔️ Zone 3 – Skills
 
@@ -96,8 +93,8 @@ Syftet är att skapa en upplevelse som känns levande, personlig och lekfull —
 
 #### 🧩 HUD / Meny (alltid synlig)
 
-- Avatar + namn
 - XP-bar som fylls när man utforskar
+- Pausmeny med snabbnavigation
 - Snabbnavigation: Home | Projects | Skills | Contact
 
 #### 🏆 Gamification
@@ -105,7 +102,7 @@ Syftet är att skapa en upplevelse som känns levande, personlig och lekfull —
 - Achievements:
   - “Explorer” (besökt alla zoner)
   - “Quest Master” (kollat alla projekt)
-- Mini-game gömt (Snake/Pong)
+- Mini-game gömt (tic-tac-toe)
 - Retro cheat code: ↑ ↑ ↓ ↓ ← → ← → B A → hemlig sektion
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
